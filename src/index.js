@@ -8,4 +8,15 @@ const hey kia
 const hey me
 const new branch 
 const pedro practice
-const project
+
+
+
+
+
+
+
+
+
+
+
+const message = "Hi Kia, Hi Pedro"
