@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./src/index.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>FotoForge</title>
 </head>
 <body>
-<h1>FotoForge V1 Hello There, Making changes</h1>
+  <h1 class="centered">FotoForge</h1>
 <div>
     <div>
       <h2>Insert Width</h2>
-      <input> </input>
+      <input placeholder =  "Insert Width"> </input> 
       <h2>Insert Height</h2>
-      <input> </input>
-      <h2>Blur</h2>
-      
-    </div>
-    <div>
-      <h1>Image Goes Here!</h1>
-      <img id="display-photo">
-    </div>
-    <label class="switch">
+     <input placeholder = "Insert Height"> </input>
+     <h2>Black & White</h2>
+      <label class="switch">
         <input type="checkbox">
         <span class="slider round"></span>
-      </label>
+    </label>
+      <h2> Blur</h2>
+      <input placeholder = "1-10"> </input>
+      
+    </div>
+    <div id = "photo-container"> 
+      <h1 id = "photo-message" class="centered">Image Goes Here!</h1>
+      <img id="display-photo">
+    </div>
+   
 </div>
    
 </body>
