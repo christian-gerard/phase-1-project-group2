@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const url = 'https://picsum.photos'
+<<<<<<< HEAD
+    const photoWidth = 500
+    const photoHeight = 500
+=======
     const photoWidth = 800
     const photoHeight = 1200
+>>>>>>> 1dbcc208672a6345c987b4cbfd227012c1974b5e
     const grayscale = true
     const blur = 0
 

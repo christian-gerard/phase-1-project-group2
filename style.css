@@ -1,5 +1,4 @@
-*{           
-}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -67,6 +66,8 @@
     text-align: center;
 }
 
+<<<<<<< HEAD
+=======
 #photo-message {
     
     visibility: hidden;
@@ -76,3 +77,4 @@
 #photo-message.display {
     visibility: visible;
 }
+>>>>>>> 1dbcc208672a6345c987b4cbfd227012c1974b5e
