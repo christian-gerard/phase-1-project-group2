@@ -20,3 +20,4 @@ hey huys!
 
 const header = 'To my fellow group members'
 const message = "Hi Kia, Hi Pedro"
+const footer = 'Sincerely, Christian'
