@@ -1,8 +1,14 @@
 /* General Style */
 
 * {
+    margin: 0;
+    padding: 0;
     font-family: 'Montserrat', sans-serif;
 }
+
+
+
+
 
 
 /* Classes */
@@ -83,19 +89,25 @@ transform: translateX(26px);
     border: 1px solid black;
     display: flex;
     flex-direction: row;
+    height: 100%;
 
  
 }
 
 #app-inputs {
     background: lightblue;
-    padding: 20px;
+    padding: 50px;
+    margin: 25px;
+   
 }
 
 #photo-container {
     background: gray;
-    padding: 20px;
-    right: 0;
+    padding: 40px;
+    margin:25px;
+    width:80%;
+
+    overflow: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,4 +121,20 @@ transform: translateX(26px);
 #photo-message.display {
     display: block;
     text-align: center;
+}
+
+#app-title {
+    font-size: 3em;
+    padding: 25px;
+
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#photo-icon {
+    font-size: 2em;
+
 }
