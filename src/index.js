@@ -1,13 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const url = 'https://picsum.photos'
-<<<<<<< HEAD
-    const photoWidth = 500
-    const photoHeight = 500
-=======
     const photoWidth = 800
-    const photoHeight = 1200
->>>>>>> 1dbcc208672a6345c987b4cbfd227012c1974b5e
+    const photoHeight = 600
     const grayscale = true
     const blur = 0
 
@@ -28,15 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
             randomPhoto.src = imgUrl
             
         })
+        .catch(err => console.log(err))
 
     }
 
     const displayLoading = () => {
         photoMessage.classList.add('display')
 
-        setTimeout( () => {
-            photoMessage.innerHTML = 'This is taking a while....Please Refresh'
-        }, 8000)
+       
         
     }
 
