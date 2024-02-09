@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
 
-
+//! kias test
 
     const fetchPhoto = () => {
         
