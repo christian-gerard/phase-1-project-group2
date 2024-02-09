@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const url = 'https://picsum.photos'
-    const photoWidth = 600
-    const photoHeight = 800
+    const photoWidth = 500
+    const photoHeight = 500
     const grayscale = true
     const blur = 5
 
