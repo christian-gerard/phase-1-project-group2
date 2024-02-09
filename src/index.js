@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const url = 'https://picsum.photos'
-    const photoWidth = 600
-    const photoHeight = 800
+    const photoWidth = 800
+    const photoHeight = 1200
     const grayscale = true
-    const blur = 5
+    const blur = 0
 
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
@@ -50,17 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     main()
     
-
-
-
-
-
-
-
-
-
-
-
 
 
 })
