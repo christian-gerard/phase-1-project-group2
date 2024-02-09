@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const blur = 5
 
     const randomPhoto = document.querySelector('#display-photo')
-    const photoContainer = 'Select parent Div of the random image once this code has been merged'
+    const photoMessage = document.querySelector('#photo-message')
 
 
 
     const fetchPhoto = () => {
         
-        displayLoading(randomPhoto)
+        displayLoading()
 
         fetch(`${url}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
         .then(resp => {
@@ -26,14 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    const displayLoading = (element) => {
-        console.log('Display Loading')
-        element.alt = 'random-photo'
+    const displayLoading = () => {
+        photoMessage.classList.add('display')
+
+        setTimeout( () => {
+            photoMessage.innerHTML = 'This is taking a while....Please Refresh'
+        }, 8000)
+        
     }
 
     const hideLoading = () => {
 
-        console.log('Hide Loading')
+        photoMessage.classList.remove('display')
     }
 
     const main = () => {

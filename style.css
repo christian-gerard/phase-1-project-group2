@@ -66,3 +66,13 @@
 .centered {
     text-align: center;
 }
+
+#photo-message {
+    
+    visibility: hidden;
+
+}
+
+#photo-message.display {
+    visibility: visible;
+}
