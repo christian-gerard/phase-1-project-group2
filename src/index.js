@@ -18,5 +18,5 @@ const pedro practice
 
 
 
-
+const header = 'To my fellow group members'
 const message = "Hi Kia, Hi Pedro"
