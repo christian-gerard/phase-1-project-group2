@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
-   
+
     const renderPhoto = () => {
 
     }
