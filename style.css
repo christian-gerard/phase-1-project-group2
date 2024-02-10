@@ -13,6 +13,18 @@
 
 /* Classes */
 
+.input-container {
+    font-size: 1.5em;
+    
+}
+
+
+.text-box {
+    height: 3em;
+    width: 300px;
+    margin: 20px;
+}
+
 .slider.round {
 border-radius: 34px;
 }
@@ -86,7 +98,6 @@ transform: translateX(26px);
 /* Id */
 
 #app-container {
-    border: 1px solid black;
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -98,16 +109,20 @@ transform: translateX(26px);
     background: lightblue;
     padding: 50px;
     margin: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
    
 }
 
 #photo-container {
-    background: gray;
+    background: lightgrey;
     padding: 40px;
     margin:25px;
     width:80%;
 
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,4 +152,11 @@ transform: translateX(26px);
 #photo-icon {
     font-size: 2em;
 
+}
+
+#generate-button {
+  
+    font-size: 1.5em;
+    margin:10px;
+    padding: 20px;
 }

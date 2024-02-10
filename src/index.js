@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    //Fetch variables
     const url = 'https://picsum.photos'
     const photoWidth = 1200
     const photoHeight = 600
+    
     let grayscale = false
     const blur = 5
 
+
+    //DOM Elements
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
+
 
     const renderPhoto = () => {
 
@@ -24,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchPhoto()
 
     });
+
+
+
+
 
     const fetchPhoto = () => {
 
