@@ -141,6 +141,7 @@ transform: translateX(26px);
 #app-title {
     font-size: 3em;
     padding: 25px;
+    letter-spacing: 10px;
 
     display:flex;
     flex-direction: row;
