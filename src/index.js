@@ -6,18 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoHeight = 600
     
     let grayscale = false
-    const blur = 5
+    const blur = 0
 
 
     //DOM Elements
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
+    const blurInput = document.querySelector('#blur-input');
 
 
     const renderPhoto = () => {
 
+    
     }
+
+    blurInput.addEventListener('input', (event) => {
+        const inputBlurValue = parseInt(event.target.value, 10);
+
+       
+    });
+
     blackAndWhite.addEventListener('change', (event) => {
         const btn = event.target.checked
         if (btn) {
@@ -30,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-
-
+   
 
 
     const fetchPhoto = () => {
