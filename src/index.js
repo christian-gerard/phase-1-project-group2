@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
     const blurInput = document.querySelector('#blur-input');
-    const photoPreview = document.querySelector('#photo-preview')
+    const photoPreviewContainer = document.querySelector('#photo-preview')
+    const photoPreviewBar = document.querySelector('#photo-preview-bar')
+    const newImagesButton = document.querySelector('#new-images-button')
 
 
     const renderPhoto = () => {
@@ -40,19 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+    newImagesButton.addEventListener('click', () => {
+
+        console.log('refresh')
+        fetchPhotoArray()
+    })
+
    
     const fetchPhotoArray = () => {
 
-        fetch(arrayUrl)
+
+        const randomPage = Math.floor(Math.random() * 100)
+
+        fetch(`${arrayUrl}&page=${randomPage}`)
         .then(resp => resp.json())
         .then(photos => {
             photos.map((photo) => {
                 const previewImg = document.createElement('img')
-                const newImgUrl = `${photo.download_url.slice(0,27)}100`
-                console.log(typeof(newImgUrl))
-
-                previewImg.src = photo.newImgUrl
-                photoPreview.appendChild(previewImg)
+                const newImgUrl = `${photo.download_url.slice(0,27)}/200`
+                console.log(newImgUrl)
+                previewImg.src = newImgUrl
+                console.log(previewImg)
+                photoPreviewBar.appendChild(previewImg)
             })
         })
 
@@ -90,9 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const main = () => {
         //Get the photo from lorem picsum
-        fetchPhoto()
 
         fetchPhotoArray()
+        fetchPhoto()
+
+        
     }
 
 
