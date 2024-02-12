@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = 'https://picsum.photos'
     const photoWidth = 1200
     const photoHeight = 600
-    
+    const createPhotoButton = document.getElementById('generate-button');
+
     let grayscale = false
     let  blur = 0
 
@@ -39,7 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
      fetchPhoto()
     });
 
-   
+    createPhotoButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log(e)
+        fetchPhoto()
+    })
 
 
     const fetchPhoto = () => {
@@ -80,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     main()
 
-fetchPhoto()
+
 
 })
 
