@@ -3,33 +3,41 @@ document.addEventListener('DOMContentLoaded', () => {
     //Fetch variables
     const url = 'https://picsum.photos'
     const arrayUrl = 'https://picsum.photos/v2/list?limit=5'
-    const photoWidth = 1200
-    const photoHeight = 600
     let grayscale = false
     let blur = 0
     let photoId = Math.floor(Math.random() * 700)
+    let photoWidth = 1200
+    let photoHeight = 600
+    
+  
+
 
 
     //DOM Elements
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
-    const blurInput = document.querySelector('#blur-input');
+    const createPhotoButton = document.getElementById('generate-button')
     const photoPreviewContainer = document.querySelector('#photo-preview')
     const photoPreviewBar = document.querySelector('#photo-preview-bar')
     const newImagesButton = document.querySelector('#new-images-button')
+    const blurInput = document.getElementById('blur-input');
+    const widthScale = document.getElementById('photo-width');
+    const heightScale = document.getElementById('photo-height');
+
+
 
 
     const renderPhoto = () => {
-
-    
+        let blueValue = blueInput.value
     }
 
     //Event Listeners
     blurInput.addEventListener('input', (event) => {
-        const inputBlurValue = parseInt(event.target.value, 10);
+        let inputValue = event.target.value;
+        blur = parseInt(inputValue);
 
-       
+        fetchPhoto()
     });
 
     blackAndWhite.addEventListener('change', (event) => {
@@ -40,9 +48,30 @@ document.addEventListener('DOMContentLoaded', () => {
             grayscale = false
         }
         console.log(grayscale)
-        fetchPhoto()
 
+        fetchPhoto()
     });
+
+
+    createPhotoButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log(e)
+        fetchPhoto()
+    })
+
+
+    heightScale.addEventListener('input', (event) => {
+        const newHeight = parseInt(event.target.value);
+        photoHeight = newHeight;
+        fetchPhoto();
+    });
+  
+      widthScale.addEventListener('input', (event) => {
+        const newWidth = parseInt(event.target.value);
+        photoWidth = newWidth;
+        fetchPhoto();
+    });
+
 
     newImagesButton.addEventListener('click', () => {
 
@@ -82,6 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
     }
+
+
 
 
     const fetchPhoto = () => {
