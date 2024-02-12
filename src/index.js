@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Fetch variables
     const url = 'https://picsum.photos'
+    const arrayUrl = 'https://picsum.photos/v2/list?limit=5'
     const photoWidth = 1200
     const photoHeight = 600
-    
     let grayscale = false
-    const blur = 0
+    let blur = 0
 
 
     //DOM Elements
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
     const blurInput = document.querySelector('#blur-input');
+    const photoPreview = document.querySelector('#photo-preview')
 
 
     const renderPhoto = () => {
@@ -40,6 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
    
+    const fetchPhotoArray = () => {
+
+        fetch(arrayUrl)
+        .then(resp => resp.json())
+        .then(photos => {
+            photos.map((photo) => {
+                const previewImg = document.createElement('img')
+                const newImgUrl = `${photo.download_url.slice(0,26)}/200`
+                console.log(newImgUrl)
+
+                previewImg.src = photo.newImgUrl
+                photoPreview.appendChild(previewImg)
+            })
+        })
+
+    }
 
 
     const fetchPhoto = () => {
@@ -74,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //Get the photo from lorem picsum
         fetchPhoto()
 
-
+        fetchPhotoArray()
     }
 
 
