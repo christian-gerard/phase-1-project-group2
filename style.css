@@ -99,10 +99,17 @@ transform: translateX(26px);
 
 #app-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
 
  
+}
+
+#app-body {
+    display:flex;
+    flex-direction: row;
+
+
 }
 
 #app-inputs {
@@ -114,6 +121,14 @@ transform: translateX(26px);
     flex-direction: column;
     justify-content: space-evenly;
    
+}
+
+#photo-preview {
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
 }
 
 #photo-container {
