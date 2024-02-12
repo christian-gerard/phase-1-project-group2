@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Fetch variables
     const url = 'https://picsum.photos'
-    const photoWidth = 1200
-    const photoHeight = 600
+    let photoWidth = 1200
+    const photoHeight = 600; 
     const createPhotoButton = document.getElementById('generate-button');
 
     let grayscale = false
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
     const blurInput = document.getElementById('blur-input');
+    const widthScale = document.getElementById('photo-width');
 
 
     const renderPhoto = () => {
@@ -46,6 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchPhoto()
     })
 
+    widthScale.addEventListener('input', (event) => {
+        const newWidth = parseInt(event.target.value);
+        photoWidth = newWidth;
+        fetchPhoto();
+    });
 
     const fetchPhoto = () => {
 
