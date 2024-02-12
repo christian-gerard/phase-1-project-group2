@@ -11,6 +11,7 @@ Get ready to embark on a journey of visual exploration and customization, turnin
 
 ## Features
 
+- The application provides a preview bar of additional images for selection.
 - Randomly generated photos for interactive customization.
 - Adjust height and width of the photos.
 - Apply blur effect for visual aesthetics.
@@ -18,7 +19,7 @@ Get ready to embark on a journey of visual exploration and customization, turnin
 - 
 
 ## License 
-This project is Ass
+This project is licensed under the MIT License
 
 ## Acknowledgments
 -  Thanks to Unsplash for providing the random photos.
