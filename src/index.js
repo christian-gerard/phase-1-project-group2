@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let blur = 0
     let photoId = Math.floor(Math.random() * 700)
 
-    console.log(`Photo Id is ${photoId}`)
-
 
     //DOM Elements
     const randomPhoto = document.querySelector('#display-photo')
@@ -27,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     }
 
+    //Event Listeners
     blurInput.addEventListener('input', (event) => {
         const inputBlurValue = parseInt(event.target.value, 10);
 
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchPhotoArray()
     })
 
-   
+   //Function Declarations
     const fetchPhotoArray = () => {
         photoPreviewBar.innerHTML =''
 
@@ -89,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         randomPhoto.src = ''
         displayLoading()
-
+        
         fetch(`${url}/id/${photoId}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
             .then(resp => {
                 
@@ -126,9 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    //Invoke functionality
     main()
-
-
 
 })
 
