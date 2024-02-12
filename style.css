@@ -1,14 +1,10 @@
 /* General Style */
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
-
-
-
-
 
 
 /* Classes */
@@ -21,15 +17,15 @@
 }
 
 .input-container {
-    font-size: 1.5em;
-    
+  font-size: 1.5em;
+  
 }
 
 
 .text-box {
-    height: 3em;
-    width: 300px;
-    margin: 20px;
+  height: 3em;
+  width: 300px;
+  margin: 20px;
 }
 
 .slider.round {
@@ -98,93 +94,172 @@ input:checked + .slider:before {
 -ms-transform: translateX(26px);
 transform: translateX(26px);
 }
-  
+
 
 
 
 /* Id */
 
 #app-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
- 
+
 }
 
 #app-body {
-    display:flex;
-    flex-direction: row;
+  display:flex;
+  flex-direction: row;
 
 
-}
-
-#app-inputs {
-    background: lightblue;
-    padding: 50px;
-    margin: 25px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-   
 }
 
 #photo-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #666;
+  background-color: lightblue;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 20px; 
+}
 
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+#new-images-button {
+  font-size: 1.2em;
+  padding: 10px;
+  border: 2px solid #666;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 5px; /* Optional: Add spacing between button and text */
+}
+
+#new-images-button h4 {
+  margin: 0;
+}
+
+#app-inputs {
+  background: lightblue;
+  padding: 50px;
+  margin: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+ 
+}
+
+#app-inputs {
+  background: lightblue;
+  padding: 50px;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  /* Add border properties */
+  border: 2px solid #666;
+  border-radius: 20px; /* Optional: Add border radius for rounded corners */
+}
+
+input {
+  width: 200px; /* Set your desired width */
+  height: 30px; /* Set your desired height */
+  border: 2px solid #ccc; /* Set your desired border color and width */
+  border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+  margin: 5px; /* Optional: Add margin to space out the input boxes */
+  padding: 5px; /* Optional: Add padding for internal spacing */
+}
+
+#app-inputs h2 {
+  text-align: center;
+}
+
+#app-inputs input {
+  text-align: center;
+}
+
+#generate-button {
+  font-size: 1.5em;
+  margin: 10px;
+  padding: 20px;
+  border: 2px solid #ccc; /* Set your desired border color and width */
+  border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+  cursor: pointer;
+}
+
+
+
+#photo-preview {
+
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 
 }
 
 #photo-container {
-    background: lightgrey;
-    padding: 40px;
-    margin:25px;
-    width:80%;
+  background: lightgrey;
+  padding: 40px;
+  margin:25px;
+  width:80%;
 
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 
 #photo-message {
-    display: none;
+  display: none;
 }
 
 #photo-message.display {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 
 #app-title {
-    font-size: 3em;
-    padding: 25px;
+  font-size: 3em;
+  padding: 25px;
 
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
 }
 
 #photo-icon {
-    font-size: 2em;
+  font-size: 2em;
 
 }
 
 #generate-button {
-  
-    font-size: 1.5em;
-    margin:10px;
-    padding: 20px;
+
+  font-size: 1.5em;
+  margin:10px;
+  padding: 20px;
 }
+
 
 #photo-storage-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+#photo-container {
+  background: lightblue;
+  padding: 40px;
+  margin: 25px;
+  width: 80%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #666; /* Set your desired border color and width */
+  border-radius: 15px; /* Adjust the value for a more or less curved appearance */
+
 }
