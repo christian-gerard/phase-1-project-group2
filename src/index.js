@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchPhoto = () => {
 
+        randomPhoto.src = ''
         displayLoading()
 
         fetch(`${url}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
