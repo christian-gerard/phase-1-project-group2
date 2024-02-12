@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoHeight = 600
     let grayscale = false
     let blur = 0
+    let photoId = Math.floor(Math.random() * 700)
+
+    console.log(`Photo Id is ${photoId}`)
 
 
     //DOM Elements
@@ -44,25 +47,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     newImagesButton.addEventListener('click', () => {
 
-        console.log('refresh')
         fetchPhotoArray()
     })
 
    
     const fetchPhotoArray = () => {
-
+        photoPreviewBar.innerHTML =''
 
         const randomPage = Math.floor(Math.random() * 100)
+
+        console.log(randomPage)
 
         fetch(`${arrayUrl}&page=${randomPage}`)
         .then(resp => resp.json())
         .then(photos => {
             photos.map((photo) => {
+
+
                 const previewImg = document.createElement('img')
-                const newImgUrl = `${photo.download_url.slice(0,27)}/200`
-                console.log(newImgUrl)
+                const newImgUrl = `${photo.download_url.slice(0,25)}${photo.id}/200`
+
+
+
+                previewImg.name = photo.id
                 previewImg.src = newImgUrl
                 console.log(previewImg)
+
+                previewImg.addEventListener('click', (e) => {
+                    photoId = e.target.name
+                    fetchPhoto()
+                    console.log(e.target.name)
+                })
                 photoPreviewBar.appendChild(previewImg)
             })
         })
@@ -75,8 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
         randomPhoto.src = ''
         displayLoading()
 
-        fetch(`${url}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
+        fetch(`${url}/id/${photoId}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
             .then(resp => {
+                
+                console.log(`${url}/id/${photoId}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
                 const imgUrl = resp['url']
 
                 hideLoading()
