@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let inputValue = event.target.value;
         blur = parseInt(inputValue);
  
-    
+    fetchPhoto()
       });
 
     blackAndWhite.addEventListener('change', (event) => {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         console.log(grayscale)
 
-     
+     fetchPhoto()
     });
 
    
