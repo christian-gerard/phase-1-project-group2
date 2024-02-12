@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let photoWidth = 1200
     let photoHeight = 600
     const createPhotoButton = document.getElementById('generate-button')
-    
+
     let grayscale = false
-    let  blur = 0
+    let blur = 0
 
 
     //DOM Elements
@@ -22,15 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const renderPhoto = () => {
-    let blueValue = blueInput.value 
+        let blueValue = blueInput.value
     }
 
     blurInput.addEventListener('input', (event) => {
         let inputValue = event.target.value;
         blur = parseInt(inputValue);
- 
-    fetchPhoto()
-      });
+
+        fetchPhoto()
+    });
 
     blackAndWhite.addEventListener('change', (event) => {
         const btn = event.target.checked
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         console.log(grayscale)
 
-     fetchPhoto()
+        fetchPhoto()
     });
 
 
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     heightScale.addEventListener('input', (event) => {
-      const newhHeight = parseInt(event.target.value);
-      photoHeight = newHeight;
-      fetchPhoto();
-  });
+        const newHeight = parseInt(event.target.value);
+        photoHeight = newHeight;
+        fetchPhoto();
+    });
 
 
     widthScale.addEventListener('input', (event) => {
