@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(photos => {
             photos.map((photo) => {
                 const previewImg = document.createElement('img')
-                const newImgUrl = `${photo.download_url.slice(0,27)}/100`
-                console.log(newImgUrl)
+                const newImgUrl = `${photo.download_url.slice(0,27)}100`
+                console.log(typeof(newImgUrl))
 
                 previewImg.src = photo.newImgUrl
                 photoPreview.appendChild(previewImg)
