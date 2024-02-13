@@ -1,6 +1,9 @@
 {
   "photos": [
     {
+
+    
+
       "id": "2",
       "unsplashId": 345,
       "name": "Zoom BackGround",
@@ -17,24 +20,27 @@
       "width": 800,
       "blur": 0,
       "bAndW": false
+
     },
     {
       "id": "4",
       "unsplashId": 444,
       "name": "Zoom BackGround",
-      "height": 600,
-      "width": 800,
+      "height": 100,
+      "width": 1600,
       "blur": 0,
-      "bAndW": false
+      "bAndW": false,
+      "grayscale": false
     },
     {
       "id": "5",
       "unsplashId": 122,
       "name": "WallPaper",
-      "height": 1200,
-      "width": 600,
-      "blur": 4,
-      "bAndW": true
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": true,
+      "grayscale": false
     }
   ]
 }
