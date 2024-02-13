@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let grayscale = false
     let blur = 0
     let photoId = Math.floor(Math.random() * 700)
-    let photoWidth = 1200
-    let photoHeight = 800
+    let photoWidth = 1600
+    let photoHeight = 1000
     
   
 
@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-
     createPhotoButton.addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -62,13 +61,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     heightScale.addEventListener('input', (event) => {
         const newHeight = parseInt(event.target.value);
-        photoHeight = newHeight;
+
+        if(newHeight > 1000) {
+            alert('Please Input a height below 1000px')
+        } else {
+            photoHeight = newHeight;
+        }
+        
 
     });
   
-      widthScale.addEventListener('input', (event) => {
+    widthScale.addEventListener('input', (event) => {
         const newWidth = parseInt(event.target.value);
-        photoWidth = newWidth;
+
+        if(newWidth > 1600) {
+            alert('Please Input a width below 1600px')
+        } else {
+            photoWidth = newWidth;
+        }
+        
 
     });
 
@@ -208,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-
     const displayLoading = () => {
         photoMessage.classList.add('display')
 
@@ -220,8 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         photoMessage.classList.remove('display')
     }
-
-
 
     const main = () => {
         //Get the photo from lorem picsum
