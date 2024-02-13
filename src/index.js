@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heightScale = document.getElementById('photo-height');
     const photoStorageContainer = document.querySelector('#photo-storage-container')
     const saveButton = document.querySelector('#save-button')
-
-
+   
 
 
 
@@ -173,8 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 newDeleteButton.name = photo.id
                 newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
                 newEditButton.classList.add('photo-card-button')
+                newEditButton.name = photo.id
                 newEditButton.innerHTML = 'Edit'
-                newEditButton.addEventListener('click', () => editPhoto())
+                newEditButton.addEventListener('click', (e) => editPhoto(e))
                 newButtonContainer.classList.add('saved-photo-buttons')
 
                 //Add Elements to new Div
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 photoStorageContainer.append(newPhotoCard)
 
-                console.log(newPhotoCard)
+               
 
 
             })
@@ -198,11 +198,36 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('PHOTO SAVED')
     }
 
-    // PEDRO -> PATCH Request
-    const editPhoto = () => {
-        console.log('EDITING PHOTO')
 
+     // PEDRO -> PATCH Request
+     const editPhoto = (e) => {
+        const editUrl = `http://localhost:3000/photos/${e.target.name}`;
+        console.log(editUrl)
+        // Define the data to be updated
+        const editData = {
+          "height": 400
+          "width": 400
+        };
+    
+        fetch(editUrl, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(editData)
+        })
+        .then(resp => {
+            if (!resp.ok) {
+             console.log("did not work")
+            }
+            console.log('EDIT SUCCESSFUL');
+        })
+        .catch(err => {
+            console.error('Error:', err);
+        });
     }
+   
+
 
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
@@ -246,8 +271,9 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchPhotoArray()
         fetchPhoto()
         renderSavedPhotos()
-
         
+       
+
     }
 
 
