@@ -18,13 +18,48 @@
     background: lightblue;
 
     margin: 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
   
-  
+
     /* Add border properties */
     border: 2px solid #666;
     border-radius: 20px
+}
+.saved-photo-buttons {
+  width: 100%;
+  display: flex;
+  margin: 5px;
+  justify-content: space-evenly;
+
+}
+
+.photo-card-button {
+  width: 125px;
+
+}
+
+.photo-input {
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+
+}
+
+.photo-bar-img {
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.photo-card-img {
+    overflow: hidden;
+    padding: 10px;
+    width:220px;
+    height: 220px;
+    border-radius: 20px;
+
 }
 
 .input-container {
@@ -122,32 +157,43 @@ transform: translateX(26px);
 #app-body {
   display:flex;
   flex-direction: row;
+  margin-bottom:60px;
 
 
 }
 
 #photo-preview {
-  display: flex;
-  justify-content: center;
   align-items: center;
   border: 2px solid #666;
   background-color: lightblue;
-  padding: 5px;
+  padding: 10px;
+  padding-right: 30px;
   margin: 5px;
+  
   border-radius: 20px; 
+
+
+  display:flex;
+  flex-direction: row;
+  justify-content: right;
+  height: 200px;
 }
 
 #new-images-button {
   font-size: 1.2em;
   padding: 10px;
+  left: 20px;
   border: 2px solid #666;
   border-radius: 10px;
   cursor: pointer;
-  margin-right: 5px; /* Optional: Add spacing between button and text */
+  margin-right: 5px;
+  
+  position: absolute;
 }
 
 #new-images-button h4 {
   margin: 0;
+  
 }
 
 #app-inputs {
@@ -158,6 +204,9 @@ transform: translateX(26px);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
+
+  height:800px;
  
 }
 
@@ -201,15 +250,6 @@ input {
 }
 
 
-
-#photo-preview {
-
-  display:flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-
-}
-
 #photo-container {
   background: lightgrey;
   padding: 40px;
@@ -250,9 +290,20 @@ input {
 
 #generate-button {
 
-  font-size: 1.5em;
+  font-size: .75em;
   margin:10px;
   padding: 20px;
+  width:200px;
+}
+
+#save-button {
+  font-size: .75em;
+  margin:10px;
+  padding: 20px;
+  border: 2px solid #ccc; /* Set your desired border color and width */
+  border-radius: 15px; 
+  width:200px;
+
 }
 
 
@@ -260,6 +311,7 @@ input {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 
 }
 
@@ -275,4 +327,9 @@ input {
   border: 2px solid #666; /* Set your desired border color and width */
   border-radius: 15px; /* Adjust the value for a more or less curved appearance */
 
+}
+
+#photo-storage-title {
+  font-size: 3em;
+  margin: 40px;
 }
