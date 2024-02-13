@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let grayscale = false
     let blur = 0
     let photoId = Math.floor(Math.random() * 700)
-    let photoWidth = 1200
-    let photoHeight = 800
+    let photoWidth = 1600
+    let photoHeight = 1000
     
   
 
@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-
     createPhotoButton.addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -62,13 +61,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     heightScale.addEventListener('input', (event) => {
         const newHeight = parseInt(event.target.value);
-        photoHeight = newHeight;
+
+        if(newHeight > 1000) {
+            alert('Please Input a height below 1000px')
+        } else {
+            photoHeight = newHeight;
+        }
+        
 
     });
   
-      widthScale.addEventListener('input', (event) => {
+    widthScale.addEventListener('input', (event) => {
         const newWidth = parseInt(event.target.value);
-        photoWidth = newWidth;
+
+        if(newWidth > 1600) {
+            alert('Please Input a width below 1600px')
+        } else {
+            photoWidth = newWidth;
+        }
+        
 
     });
 
@@ -100,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 previewImg.name = photo.id
                 previewImg.src = newImgUrl
+                previewImg.classList.add('photo-bar-img')
 
                 previewImg.addEventListener('click', (e) => {
                     photoId = e.target.name
@@ -140,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             savedPhotos.map((photo) => {
                 //Declare new elements
                 const newPhotoCard = document.createElement('div')
+                const newButtonContainer = document.createElement('div')
                 const newPhotoName = document.createElement('h3')
                 const newPhotoSize = document.createElement('h5')
                 const newBlurPreview = document.createElement('h5')
@@ -150,23 +163,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 //Input Data into new elements
                 newPhotoName.innerHTML = photo.name
-                newPhotoSize.innerHTML = `Width:${photo.width} Height:${photo.height}`
-                newGrayscale.innerHTML = `${grayscale ? 'Yes' : 'No'}`
-                newBlurPreview.innerHTML = photo.blur
+                newPhotoSize.innerHTML = `Width: ${photo.width} Height: ${photo.height}`
+                newGrayscale.innerHTML = `B&W: ${grayscale ? 'Yes' : 'No'}`
+                newBlurPreview.innerHTML = `Blur: ${photo.blur}`
+                newImgPreview.classList.add('photo-card-img')
                 newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
+                newDeleteButton.classList.add('photo-card-button')
                 newDeleteButton.innerHTML = 'X'
                 newDeleteButton.name = photo.id
                 newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
+                newEditButton.classList.add('photo-card-button')
                 newEditButton.innerHTML = 'Edit'
                 newEditButton.addEventListener('click', () => editPhoto())
+                newButtonContainer.classList.add('saved-photo-buttons')
 
                 //Add Elements to new Div
                 newPhotoCard.classList.add('photo-card')
-                newPhotoCard.append(newDeleteButton, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newEditButton, newImgPreview)
+                newButtonContainer.append(newEditButton, newDeleteButton)
+                newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
                 
                 //Add new Photo Card to Saved Photos
 
                 photoStorageContainer.append(newPhotoCard)
+
+                console.log(newPhotoCard)
 
 
             })
@@ -208,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-
     const displayLoading = () => {
         photoMessage.classList.add('display')
 
@@ -220,8 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         photoMessage.classList.remove('display')
     }
-
-
 
     const main = () => {
         //Get the photo from lorem picsum
