@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let blur = 0
     let photoId = Math.floor(Math.random() * 700)
     let photoWidth = 1200
-    let photoHeight = 600
+    let photoHeight = 800
     
   
 
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const randomPage = Math.floor(Math.random() * 100)
 
-        console.log(randomPage)
+
 
         fetch(`${arrayUrl}&page=${randomPage}`)
         .then(resp => resp.json())
@@ -155,7 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 newBlurPreview.innerHTML = photo.blur
                 newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
                 newDeleteButton.innerHTML = 'X'
-                newDeleteButton.addEventListener('click', () => deletePhoto())
+                newDeleteButton.name = photo.id
+                newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
                 newEditButton.innerHTML = 'Edit'
                 newEditButton.addEventListener('click', () => editPhoto())
 
@@ -184,8 +185,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // CHRISTIAN -> DELETE Request
-    const deletePhoto = () => {
-        console.log('PHOTO DELETED')
+    const deletePhoto = (e) => {
+        console.log(e.target.name)
+        const deleteUrl = `http://localhost:3000/photos/${e.target.name}`
+        console.log(e)
+        fetch(deleteUrl, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then( resp => {
+            if(!resp.ok) {
+                throw new Error('ERROR');
+            }
+            console.log('DELETE SUCCESSFUL')
+        })
+        .catch(err => {
+            console.error('Error:', err)
+        })
+
+
     }
 
 

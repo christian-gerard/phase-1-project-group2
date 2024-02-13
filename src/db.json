@@ -1,40 +1,58 @@
 {
-    "photos": [
-        {
-            "id": 0,
-            "unsplashId":68,
-            "name": "First Photo",
-            "height": 600,
-            "width": 800,
-            "blur": 4,
-            "bAndW": true
-        },
-        {   
-            "id": 1,
-            "unsplashId":147,
-            "name": "Favorite Pic",
-            "height": 600,
-            "width": 800,
-            "blur": 2,
-            "bAndW": false
-        },
-        {
-            "id": 2,
-            "unsplashId":78,
-            "name": "Zoom BackGround",
-            "height": 600,
-            "width": 800,
-            "blur": 0,
-            "bAndW": false
-        },
-        {   
-            "id": 3,
-            "unsplashId":122,
-            "name": "WallPaper",
-            "height": 1200,
-            "width": 600,
-            "blur": 4,
-            "bAndW": true
-        }
-    ]
+  "photos": [
+    {
+      "id": "0",
+      "unsplashId": 68,
+      "name": "First Photo",
+      "height": 600,
+      "width": 800,
+      "blur": 4,
+      "bAndW": true
+    },
+    {
+        "id": "1",
+        "unsplashId": 654,
+        "name": "Zoom BackGround",
+        "height": 600,
+        "width": 800,
+        "blur": 0,
+        "bAndW": false
+    },
+    {
+        "id": "2",
+        "unsplashId": 345,
+        "name": "Zoom BackGround",
+        "height": 600,
+        "width": 800,
+        "blur": 0,
+        "bAndW": false
+    },
+    {
+        "id": "3",
+        "unsplashId": 654,
+        "name": "Zoom BackGround",
+        "height": 600,
+        "width": 800,
+        "blur": 0,
+        "bAndW": false
+    },
+    {
+      "id": "4",
+      "unsplashId": 444,
+      "name": "Zoom BackGround",
+      "height": 600,
+      "width": 800,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "5",
+      "unsplashId": 122,
+      "name": "WallPaper",
+      "height": 1200,
+      "width": 600,
+      "blur": 4,
+      "bAndW": true
+    }
+  ]
 }
