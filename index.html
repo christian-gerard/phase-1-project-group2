@@ -14,6 +14,16 @@
 
 <body>
 
+  <div id="editModal" class="modalOff">
+    <button id='modal-exit-button' class="close">X</button>
+    <h1 id="edit-modal-title">Edit Photo</h1>
+    <input class='editModalInput' placeholder="width"></input>
+    <input class='editModalInput' placeholder="height"></input>
+    <input class='editModalInput' placeholder="B&W"></input>
+    <input class='editModalInput' placeholder="Blur"></input>
+
+  </div>
+
   <div id='app-title' class="centered">
     <h1>Foto ~ </h1>
     <span id='photo-icon' class="material-symbols-outlined">
@@ -25,9 +35,12 @@
 <div id="app-container">
 
     <div id="photo-preview">
+      
+      <div>
       <button id="new-images-button">
         <h4>New Images</h4>
       </button>
+      </div>
 
       <div id="photo-preview-bar">
 
@@ -98,6 +111,9 @@
    
   
 </div>
+
+
+
    
 </body>
 </html>
