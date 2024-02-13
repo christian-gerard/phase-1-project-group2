@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Fetch variables
     const url = 'https://picsum.photos'
-    const arrayUrl = 'https://picsum.photos/v2/list?limit=5'
+    const arrayUrl = 'https://picsum.photos/v2/list?limit=10'
     const dbUrl = 'http://localhost:3000/photos'
     let grayscale = false
     let blur = 0

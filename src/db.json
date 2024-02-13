@@ -1,40 +1,22 @@
 {
   "photos": [
     {
-      "id": "0",
-      "unsplashId": 68,
-      "name": "First Photo",
+      "id": "2",
+      "unsplashId": 345,
+      "name": "Zoom BackGround",
       "height": 600,
       "width": 800,
-      "blur": 4,
-      "bAndW": true
+      "blur": 0,
+      "bAndW": false
     },
     {
-        "id": "1",
-        "unsplashId": 654,
-        "name": "Zoom BackGround",
-        "height": 600,
-        "width": 800,
-        "blur": 0,
-        "bAndW": false
-    },
-    {
-        "id": "2",
-        "unsplashId": 345,
-        "name": "Zoom BackGround",
-        "height": 600,
-        "width": 800,
-        "blur": 0,
-        "bAndW": false
-    },
-    {
-        "id": "3",
-        "unsplashId": 654,
-        "name": "Zoom BackGround",
-        "height": 600,
-        "width": 800,
-        "blur": 0,
-        "bAndW": false
+      "id": "3",
+      "unsplashId": 654,
+      "name": "Zoom BackGround",
+      "height": 600,
+      "width": 800,
+      "blur": 0,
+      "bAndW": false
     },
     {
       "id": "4",
