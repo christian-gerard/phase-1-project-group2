@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoMessage = document.querySelector('#photo-message')
     const blackAndWhite = document.querySelector('#toggle')
     const createPhotoButton = document.getElementById('generate-button')
-    const photoPreviewContainer = document.querySelector('#photo-preview')
     const photoPreviewBar = document.querySelector('#photo-preview-bar')
     const newImagesButton = document.querySelector('#new-images-button')
     const blurInput = document.getElementById('blur-input');
@@ -27,11 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const heightScale = document.getElementById('photo-height');
     const photoStorageContainer = document.querySelector('#photo-storage-container')
     const saveButton = document.querySelector('#save-button')
-
-
-
-
-
+    const editModal = document.querySelector('#editModal')
+    const modalExitButton = document.querySelector('#modal-exit-button')
 
     //Event Listeners
     blurInput.addEventListener('input', (event) => {
@@ -89,6 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     saveButton.addEventListener('click', () => savePhoto())
+
+    modalExitButton.addEventListener('click', () => hideModal())
 
    //Function Declarations
     const fetchPhotoArray = () => {
@@ -161,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newDeleteButton = document.createElement('button')
                 const newImgPreview = document.createElement('img')
 
+
                 //Input Data into new elements
                 newPhotoName.innerHTML = photo.name
                 newPhotoSize.innerHTML = `Width: ${photo.width} Height: ${photo.height}`
@@ -174,8 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
                 newEditButton.classList.add('photo-card-button')
                 newEditButton.innerHTML = 'Edit'
-                newEditButton.addEventListener('click', () => editPhoto())
+                newEditButton.name = photo.id
+                newEditButton.addEventListener('click', (e) => editPhoto(e))
                 newButtonContainer.classList.add('saved-photo-buttons')
+
+ 
+
 
                 //Add Elements to new Div
                 newPhotoCard.classList.add('photo-card')
@@ -186,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 photoStorageContainer.append(newPhotoCard)
 
-                console.log(newPhotoCard)
+
 
 
             })
@@ -199,8 +202,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // PEDRO -> PATCH Request
-    const editPhoto = () => {
-        console.log('EDITING PHOTO')
+    const editPhoto = (e) => {
+
+        displayModal()
+        const id = e.target.name
+
+        console.log(editModal)
+
+        
 
     }
 
@@ -238,6 +247,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const hideLoading = () => {
 
         photoMessage.classList.remove('display')
+    }
+
+    const displayModal = () => {
+        editModal.classList.remove('modalOff')
+        editModal.classList.add('modal')
+    }
+
+    const hideModal = () => {
+        editModal.classList.remove('modal')
+        editModal.classList.add('modalOff')
     }
 
     const main = () => {
