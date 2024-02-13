@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Fetch variables
     const url = 'https://picsum.photos'
     const arrayUrl = 'https://picsum.photos/v2/list?limit=5'
+    const dbUrl = 'http://localhost:3000/photos'
     let grayscale = false
     let blur = 0
     let photoId = Math.floor(Math.random() * 700)
@@ -24,20 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const blurInput = document.getElementById('blur-input');
     const widthScale = document.getElementById('photo-width');
     const heightScale = document.getElementById('photo-height');
+    const photoStorageContainer = document.querySelector('#photo-storage-container')
+    const saveButton = document.querySelector('#save-button')
 
 
 
 
-    const renderPhoto = () => {
-        let blueValue = blueInput.value
-    }
+
 
     //Event Listeners
     blurInput.addEventListener('input', (event) => {
         let inputValue = event.target.value;
         blur = parseInt(inputValue);
 
-        fetchPhoto()
+
     });
 
     blackAndWhite.addEventListener('change', (event) => {
@@ -49,34 +50,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         console.log(grayscale)
 
-        fetchPhoto()
+
     });
 
 
     createPhotoButton.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log(e)
-        fetchPhoto()
-    })
 
+        fetchPhoto();
+    })
 
     heightScale.addEventListener('input', (event) => {
         const newHeight = parseInt(event.target.value);
         photoHeight = newHeight;
-        fetchPhoto();
+
     });
   
       widthScale.addEventListener('input', (event) => {
         const newWidth = parseInt(event.target.value);
         photoWidth = newWidth;
-        fetchPhoto();
-    });
 
+    });
 
     newImagesButton.addEventListener('click', () => {
 
         fetchPhotoArray()
     })
+
+    saveButton.addEventListener('click', () => savePhoto())
 
    //Function Declarations
     const fetchPhotoArray = () => {
@@ -99,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 previewImg.name = photo.id
                 previewImg.src = newImgUrl
-                console.log(previewImg)
 
                 previewImg.addEventListener('click', (e) => {
                     photoId = e.target.name
@@ -112,9 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-
-
-
     const fetchPhoto = () => {
 
         randomPhoto.src = ''
@@ -123,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`${url}/id/${photoId}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
             .then(resp => {
                 
-                console.log(`${url}/id/${photoId}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
+                
                 const imgUrl = resp['url']
 
                 hideLoading()
@@ -133,6 +130,64 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => console.log(err))
 
     }
+
+    const renderSavedPhotos = () => {
+
+        fetch(dbUrl)
+        .then(resp => resp.json())
+        .then(savedPhotos => {
+
+            savedPhotos.map((photo) => {
+                //Declare new elements
+                const newPhotoCard = document.createElement('div')
+                const newPhotoName = document.createElement('h3')
+                const newPhotoSize = document.createElement('h5')
+                const newBlurPreview = document.createElement('h5')
+                const newGrayscale = document.createElement('h5')
+                const newEditButton = document.createElement('button')
+                const newDeleteButton = document.createElement('button')
+                const newImgPreview = document.createElement('img')
+
+                //Input Data into new elements
+                newPhotoName.innerHTML = photo.name
+                newPhotoSize.innerHTML = `Width:${photo.width} Height:${photo.height}`
+                newGrayscale.innerHTML = `${grayscale ? 'Yes' : 'No'}`
+                newBlurPreview.innerHTML = photo.blur
+                newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
+                newDeleteButton.innerHTML = 'X'
+                newDeleteButton.addEventListener('click', () => deletePhoto())
+                newEditButton.innerHTML = 'Edit'
+                newEditButton.addEventListener('click', () => editPhoto())
+
+                //Add Elements to new Div
+                newPhotoCard.classList.add('photo-card')
+                newPhotoCard.append(newDeleteButton, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newEditButton, newImgPreview)
+                
+                //Add new Photo Card to Saved Photos
+
+                photoStorageContainer.append(newPhotoCard)
+
+
+            })
+        })
+    }
+
+    // KIA -> POST Request
+    const savePhoto = () => {
+        console.log('PHOTO SAVED')
+    }
+
+    // PEDRO -> PATCH Request
+    const editPhoto = () => {
+        console.log('EDITING PHOTO')
+
+    }
+
+    // CHRISTIAN -> DELETE Request
+    const deletePhoto = () => {
+        console.log('PHOTO DELETED')
+    }
+
 
     const displayLoading = () => {
         photoMessage.classList.add('display')
@@ -146,11 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
         photoMessage.classList.remove('display')
     }
 
+
+
     const main = () => {
         //Get the photo from lorem picsum
 
         fetchPhotoArray()
         fetchPhoto()
+        renderSavedPhotos()
 
         
     }
