@@ -82,6 +82,11 @@ If you would like to edit a saved photo then scroll down to 'My Photos', find wh
 ### Deleting a photo
 If you no longer wish to store your photo, then please navigate back down to 'My Photos'. Find the photo you would like to delete and hit the 'X' button. This will delete the photo from the applications memory and you will no longer be able to access it.
 
+## API
+FotoForge uses the Lorem Picsum API (https://picsum.photos/) to access, render, and edit photos. All of Lorem Picsum's photos are provided by Unsplash. Unsplash is a platform that stores freely usable images for anyone to access and use. 
+<br><br>
+API endpoint information can be found on (picsum.photos)
+
 ## License 
 This project is licensed under the MIT License
 
