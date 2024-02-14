@@ -183,22 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 newEditButton.classList.add('photo-card-button')
                 newEditButton.name = photo.id
                 newEditButton.innerHTML = 'Edit'
-
-
                 newEditButton.name = photo.id
-
                 newEditButton.addEventListener('click', (e) => editPhoto(e))
                 newButtonContainer.classList.add('saved-photo-buttons')
-
-
-
                 newEditButton.name = photo.id
-
                 newEditButton.addEventListener('click', (e) => editPhoto(e))
                 newButtonContainer.classList.add('saved-photo-buttons')
-
-
-
 
                 //Add Elements to new Div
                 newPhotoCard.classList.add('photo-card')
@@ -206,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
 
                 //Add new Photo Card to Saved Photos
-
                 photoStorageContainer.append(newPhotoCard)
 
 
@@ -280,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayModal()
 
         const id = e.target.name
-
+        console.log(e.target)
         editModalForm.addEventListener('submit', (e) => patchPhoto(e,id))
 
         // patchPhoto(id)
@@ -353,40 +342,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const displayLoading = () => {
         photoMessage.classList.add('display')
-
-
-
     }
 
     const hideLoading = () => {
-
         photoMessage.classList.remove('display')
     }
 
     const displayModal = () => {
         editModal.classList.remove('modalOff')
         editModal.classList.add('modal')
-
     }
 
     const hideModal = () => {
-        
         editModal.classList.remove('modal')
         editModal.classList.add('modalOff')
-
-
-
     }
 
     const main = () => {
         //Get the photo from lorem picsum
-
         fetchPhotoArray()
         fetchPhoto()
         renderSavedPhotos()
-
-
-
     }
 
 

@@ -3,19 +3,19 @@
     {
       "id": "2",
       "unsplashId": 345,
-      "name": "Test",
-      "height": 100,
-      "width": 100,
-      "blur": 8,
-      "bAndW": false
+      "name": "Washington DC",
+      "height": 500,
+      "width": 500,
+      "blur": 1,
+      "bAndW": true
     },
     {
       "id": "5",
       "unsplashId": 122,
-      "name": "SHWEEET",
+      "name": "Washington DC",
       "height": 500,
       "width": 500,
-      "blur": 5,
+      "blur": 1,
       "bAndW": true
     }
   ]
