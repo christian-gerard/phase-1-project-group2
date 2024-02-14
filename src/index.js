@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let photoWidth = 1600
     let photoHeight = 1000
  
-
-
-
-
     //DOM Elements
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
@@ -89,10 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     saveButton.addEventListener('click', () => savePhoto())
 
     modalExitButton.addEventListener('click', () => hideModal())
-
-
-    //Function Declarations
-
 
    //Function Declarations
 
@@ -229,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     photos.map((photo) => dbData.push(photo))
                 })
         }
+
         getDbData()
         console.log(dbData)
 
@@ -265,6 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "bAndW": grayscale
 
         }
+
+        console.log(photoData)
         fetch(dbUrl)
 
     }
