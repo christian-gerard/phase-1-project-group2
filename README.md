@@ -1,5 +1,5 @@
 
-![Foto Forge] (fotoForgeTitle.png)
+![foto forge](fotoForgeTitle.png)
 ### Create and Save beautiful images
 
 ## Table of Contents 
@@ -94,4 +94,4 @@ This project is licensed under the MIT License
 -  Thanks to Unsplash for providing the random photos.
 - Special thanks to our contributors for their valuable input and contributions.
 
-## Badges???
+
