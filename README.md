@@ -68,7 +68,7 @@ In order to store your beautiful creations you will need to open up your own JSO
 ### Choose a photo
 On the top of the application, right below the title. You will see a selection of 10 randomly generated photos for you to choose from. You can scroll left and right to view all of the photos. If none of the photos are to your liking. Hit 'New Images' and 10 brand new photos will be provided for you. Once you find one you like. Click it with your mouse. 
 
-### Editing a photo
+### Creating a photo
 Once you click on a photo it will appear in preview area below the photo you selected. This is a full preview of your photo with a default size of 1000px by 1600px. The photo previewed will be the same size you specify on the left hand side. To the left of the preview is the editing bar. The first field is for what you want to name your image. You can also specify the width and height. This field takes in pixels as a measurement to size your images. Below these you have the option to make your image black and white. By default, the images will be color. However, please be aware that some photos are originally black and white. If the black and white selector is turned off but the photo is still in black and white then you are looking at the original photo. The next input is blur. Blur is measured on a scale from 0 to 10 with 0 being no blur and 10 being extremely blurry. This will default to zero. 
 <br><br>
 Once you have specified how you want your image to look. Hit the 'Update Photo' button on the lower left side. This will apply your changes and you can view your photo. If you do not like how it looks, adjust the options and hit update again. Repeat until you have your desired image.
@@ -81,7 +81,6 @@ If you would like to edit a saved photo then scroll down to 'My Photos', find wh
 
 ### Deleting a photo
 If you no longer wish to store your photo, then please navigate back down to 'My Photos'. Find the photo you would like to delete and hit the 'X' button. This will delete the photo from the applications memory and you will no longer be able to access it.
-
 
 ## License 
 This project is licensed under the MIT License
