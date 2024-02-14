@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const editModal = document.querySelector('#editModal')
     const modalExitButton = document.querySelector('#modal-exit-button')
     const newPhotoName = document. querySelector('#"photo-name-input"')
+    const editModalForm = document.querySelector('#edit-photo-form')
+
 
     //Event Listeners
     blurInput.addEventListener('input', (event) => {
@@ -89,7 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalExitButton.addEventListener('click', () => hideModal())
 
+
     //Function Declarations
+
+
+   //Function Declarations
+
     const fetchPhotoArray = () => {
         photoPreviewBar.innerHTML = ''
 
@@ -145,36 +152,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderSavedPhotos = () => {
 
         fetch(dbUrl)
-            .then(resp => resp.json())
-            .then(savedPhotos => {
+        .then(resp => resp.json())
+        .then(savedPhotos => {
 
-                savedPhotos.map((photo) => {
-                    //Declare new elements
-                    const newPhotoCard = document.createElement('div')
-                    const newButtonContainer = document.createElement('div')
-                    const newPhotoName = document.createElement('h3')
-                    const newPhotoSize = document.createElement('h5')
-                    const newBlurPreview = document.createElement('h5')
-                    const newGrayscale = document.createElement('h5')
-                    const newEditButton = document.createElement('button')
-                    const newDeleteButton = document.createElement('button')
-                    const newImgPreview = document.createElement('img')
+            savedPhotos.map((photo) => {
+                //Declare new elements
+                const newPhotoCard = document.createElement('div')
+                const newButtonContainer = document.createElement('div')
+                const newPhotoName = document.createElement('h3')
+                const newPhotoSize = document.createElement('h5')
+                const newBlurPreview = document.createElement('h5')
+                const newGrayscale = document.createElement('h5')
+                const newEditButton = document.createElement('button')
+                const newDeleteButton = document.createElement('button')
+                const newImgPreview = document.createElement('img')
 
 
-                    //Input Data into new elements
-                    newPhotoName.innerHTML = photo.name
-                    newPhotoSize.innerHTML = `Width: ${photo.width} Height: ${photo.height}`
-                    newGrayscale.innerHTML = `B&W: ${grayscale ? 'Yes' : 'No'}`
-                    newBlurPreview.innerHTML = `Blur: ${photo.blur}`
-                    newImgPreview.classList.add('photo-card-img')
-                    newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
-                    newDeleteButton.classList.add('photo-card-button')
-                    newDeleteButton.innerHTML = 'X'
-                    newDeleteButton.name = photo.id
-                    newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
-                    newEditButton.classList.add('photo-card-button')
-                    newEditButton.name = photo.id
-                    newEditButton.innerHTML = 'Edit'
+                //Input Data into new elements
+                newPhotoName.innerHTML = photo.name
+                newPhotoSize.innerHTML = `Width: ${photo.width}px <> Height: ${photo.height}px`
+                newGrayscale.innerHTML = `B&W: ${photo.bAndW ? 'Yes' : 'No'}`
+                newBlurPreview.innerHTML = `Blur: ${photo.blur}`
+                newImgPreview.classList.add('photo-card-img')
+                newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
+                newDeleteButton.classList.add('photo-card-button')
+                newDeleteButton.innerHTML = 'X'
+                newDeleteButton.name = photo.id
+                newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
+                newEditButton.classList.add('photo-card-button')
+                newEditButton.name = photo.id
+                newEditButton.innerHTML = 'Edit'
+
+
+                newEditButton.name = photo.id
+
+                newEditButton.addEventListener('click', (e) => editPhoto(e))
+                newButtonContainer.classList.add('saved-photo-buttons')
+
 
 
                     newEditButton.name = photo.id
@@ -259,31 +273,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // PEDRO -> PATCH Request
     const editPhoto = (e) => {
-
         displayModal()
+
         const id = e.target.name
 
-        console.log(editModal)
+        editModalForm.addEventListener('submit', (e) => patchPhoto(e,id))
+
+        // patchPhoto(id)
+ 
 
     }
 
 
-    // PEDRO -> PATCH Request
-    const edittPhoto = (e) => {
-        const editUrl = `http://localhost:3000/photos/${e.target.name}`;
-        console.log(editUrl)
+     // PEDRO -> PATCH Request
+     const patchPhoto = (e, id) => {
+
+        e.preventDefault()
+
+        const editObject = {
+            "name": e.target.editName.value,
+            "height": Number(e.target.editHeight.value),
+            "width": Number(e.target.editWidth.value),
+            "blur": Number(e.target.editBlur.value),
+            "bAndW": e.target.editBAndW.checked
+        }
+        debugger
+        const editUrl = `http://localhost:3000/photos/${id}`;
+
         // Define the data to be updated
-        const editData = {
-            "height": 400,
-            "width": 400
-        };
+    
 
         fetch(editUrl, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(editData)
+            body: JSON.stringify(editObject)
         })
             .then(resp => {
                 if (!resp.ok) {
@@ -295,8 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error:', err);
             });
     }
-
-
 
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
@@ -337,11 +360,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayModal = () => {
         editModal.classList.remove('modalOff')
         editModal.classList.add('modal')
+
     }
 
     const hideModal = () => {
+        editModalForm.removeEventListener('submit',patchPhoto())
         editModal.classList.remove('modal')
         editModal.classList.add('modalOff')
+
+
+
     }
 
     const main = () => {
