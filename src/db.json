@@ -3,10 +3,10 @@
     {
       "id": "2",
       "unsplashId": 345,
-      "name": "NEW",
-      "height": 12,
-      "width": 12,
-      "blur": 0,
+      "name": "SHWEEET",
+      "height": 1,
+      "width": 1,
+      "blur": 5,
       "bAndW": true
     },
     {
@@ -21,10 +21,10 @@
     {
       "id": "5",
       "unsplashId": 122,
-      "name": "WallPaper",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
+      "name": "NEW",
+      "height": 3,
+      "width": 3,
+      "blur": 2,
       "bAndW": true
     }
   ]

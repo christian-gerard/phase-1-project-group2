@@ -228,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
      // PEDRO -> PATCH Request
      const patchPhoto = (e, id) => {
 
-        e.preventDefault()
 
         const editObject = {
             "name": e.target.editName.value,
@@ -237,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "blur": Number(e.target.editBlur.value),
             "bAndW": e.target.editBAndW.checked
         }
-        debugger
+
         const editUrl = `http://localhost:3000/photos/${id}`;
 
         // Define the data to be updated
@@ -258,6 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => {
             console.error('Error:', err);
         });
+
+        editModalForm.removeEventListener('submit',patchPhoto())
     }
    
     // CHRISTIAN -> DELETE Request
@@ -303,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const hideModal = () => {
-        editModalForm.removeEventListener('submit',patchPhoto())
+        
         editModal.classList.remove('modal')
         editModal.classList.add('modalOff')
 
