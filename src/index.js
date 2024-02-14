@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoNameInput = document.querySelector('#photo-name-input')
 
     //Event Listeners
+    editModalForm.addEventListener('submit', (e) => patchPhoto(e))
+
     blurInput.addEventListener('input', (event) => {
         let inputValue = event.target.value;
         blur = parseInt(inputValue);
-
-
     });
 
     blackAndWhite.addEventListener('change', (event) => {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             grayscale = false
         }
-        console.log(grayscale)
+
 
 
     });
@@ -160,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                     //Input Data into new elements
+                    newPhotoCard.id = photo.id
                     newPhotoName.innerHTML = photo.name
                     newPhotoSize.innerHTML = `Width: ${photo.width}px <> Height: ${photo.height}px`
                     newGrayscale.innerHTML = `B&W: ${photo.bAndW ? 'Yes' : 'No'}`
@@ -273,16 +274,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }}
         
-
-
         // PEDRO -> PATCH Request
     const editPhoto = (e) => {
+
+
             displayModal()
-
-
             const id = e.target.name
 
-            editModalForm.addEventListener('submit', (e) => patchPhoto(e, id))
+        editModalForm.name = id
+
+
+
+           
 
             // patchPhoto(id)
 
@@ -291,13 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
         // PEDRO -> PATCH Request
-    const patchPhoto = (e, id) => {
-
- 
+    const patchPhoto = (e) => {
         e.preventDefault()
      // write if statment
    
-     console.log(e.target.editName.value)
+
      if  (e.target.editName.value === "" || e.target.editHeight.value === "" ||  e.target.editWidth.value === "" || e.target.editBlur.value === "" || e.target.editBAndW.checked === "") {
         alert("Please fill out all fields!");
     }
@@ -313,7 +314,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         
 
-            const editUrl = `http://localhost:3000/photos/${id}`;
+            const editUrl = `http://localhost:3000/photos/${editModalForm.name}`;
+
 
             fetch(editUrl, {
                 method: 'PATCH',
@@ -333,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
             // Define the data to be updated
-            editModalForm.removeEventListener('submit',patchPhoto())
+            
     }}
 
     // CHRISTIAN -> DELETE Request
@@ -377,6 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const hideModal = () => {
         editModal.classList.remove('modal')
         editModal.classList.add('modalOff')
+
+        
+        
     }
 
     const main = () => {

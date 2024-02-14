@@ -1,52 +1,49 @@
 {
   "photos": [
     {
-
       "id": "4",
       "unsplashId": 444,
-      "name": "pedro",
-      "height": 500,
-      "width": 600,
-
+      "name": "TESTING TESTING",
+      "height": 111111,
+      "width": 123,
       "blur": 1,
       "bAndW": true
     },
     {
       "id": "5",
       "unsplashId": 122,
-
-      "name": "",
-      "height": 0,
-      "width": 0,
-      "blur": 0,
-      "bAndW": false
+      "name": "MODAL TEST",
+      "height": 500,
+      "width": 500,
+      "blur": 1,
+      "bAndW": true
     },
     {
       "id": "2i2b614bkup",
       "unsplashId": 662,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
+      "name": "MODDDDDALLLL",
+      "height": 2,
+      "width": 2,
+      "blur": 1,
+      "bAndW": true
     },
     {
       "id": "c7anbp1wpj6",
       "unsplashId": 455,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
+      "name": "HEllo",
+      "height": 123,
+      "width": 123,
+      "blur": 1,
+      "bAndW": true
     },
     {
       "id": "bfzsjwnj3v",
       "unsplashId": 1,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
+      "name": "COMPUTER",
+      "height": 400,
+      "width": 400,
+      "blur": 2,
+      "bAndW": true
     },
     {
       "id": "lmm2ug465ui",
@@ -60,15 +57,6 @@
     {
       "id": "s3sca2vin9",
       "unsplashId": 157,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
-    },
-    {
-      "id": "aiws5f9734e",
-      "unsplashId": 226,
       "name": "Zoom BackGround",
       "height": 1000,
       "width": 1600,
