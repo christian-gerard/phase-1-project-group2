@@ -1,26 +1,13 @@
 {
   "photos": [
     {
-
-    
-
       "id": "2",
       "unsplashId": 345,
-      "name": "Zoom BackGround",
-      "height": 600,
-      "width": 800,
+      "name": "",
+      "height": 0,
+      "width": 0,
       "blur": 0,
       "bAndW": false
-    },
-    {
-      "id": "3",
-      "unsplashId": 654,
-      "name": "Zoom BackGround",
-      "height": 600,
-      "width": 800,
-      "blur": 0,
-      "bAndW": false
-
     },
     {
       "id": "4",
@@ -29,8 +16,7 @@
       "height": 100,
       "width": 1600,
       "blur": 0,
-      "bAndW": false,
-      "grayscale": false
+      "bAndW": false
     },
     {
       "id": "5",
@@ -39,8 +25,7 @@
       "height": 1000,
       "width": 1600,
       "blur": 0,
-      "bAndW": true,
-      "grayscale": false
+      "bAndW": true
     }
   ]
 }
