@@ -271,12 +271,12 @@ document.addEventListener('DOMContentLoaded', () => {
             body: JSON.stringify(photoData),
 
         });
-    }
+    }}
         
 
 
         // PEDRO -> PATCH Request
-        const editPhoto = (e) => {
+    const editPhoto = (e) => {
             displayModal()
 
 
@@ -288,12 +288,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        }
-
-
+    }
 
         // PEDRO -> PATCH Request
-        const patchPhoto = (e, id) => {
+    const patchPhoto = (e, id) => {
 
  
         e.preventDefault()
@@ -313,22 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "bAndW": e.target.editBAndW.checked
         }
 
-            const editObject = {
-                "name": e.target.editName.value,
-                "height": Number(e.target.editHeight.value),
-                "width": Number(e.target.editWidth.value),
-                "blur": Number(e.target.editBlur.value),
-                "bAndW": e.target.editBAndW.checked
-            }
+        
 
             const editUrl = `http://localhost:3000/photos/${id}`;
-
-            // Define the data to be updated
-
-
-            editModalForm.removeEventListener('submit',patchPhoto())
-    }}
-
 
             fetch(editUrl, {
                 method: 'PATCH',
@@ -347,32 +332,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Error:', err);
                 });
 
-            editModalForm.removeEventListener('submit', patchPhoto())
-        }}
+            // Define the data to be updated
+            editModalForm.removeEventListener('submit',patchPhoto())
+    }}
 
-        // CHRISTIAN -> DELETE Request
-        const deletePhoto = (e) => {
-            console.log(e.target.name)
-            const deleteUrl = `http://localhost:3000/photos/${e.target.name}`
-            console.log(e)
-            fetch(deleteUrl, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+    // CHRISTIAN -> DELETE Request
+    const deletePhoto = (e) => {
+        console.log(e.target.name)
+        const deleteUrl = `http://localhost:3000/photos/${e.target.name}`
+        console.log(e)
+        fetch(deleteUrl, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error('ERROR');
+                }
+                console.log('DELETE SUCCESSFUL')
             })
-                .then(resp => {
-                    if (!resp.ok) {
-                        throw new Error('ERROR');
-                    }
-                    console.log('DELETE SUCCESSFUL')
-                })
-                .catch(err => {
-                    console.error('Error:', err)
-                })
+            .catch(err => {
+                console.error('Error:', err)
+            })
 
 
-        }
+    }
 
 
     const displayLoading = () => {
