@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let photoWidth = 1600
     let photoHeight = 1000
  
-
-
-
-
     //DOM Elements
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
@@ -89,10 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     saveButton.addEventListener('click', () => savePhoto())
 
     modalExitButton.addEventListener('click', () => hideModal())
-
-
-    //Function Declarations
-
 
    //Function Declarations
 
@@ -174,6 +166,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 newBlurPreview.innerHTML = `Blur: ${photo.blur}`
                 newImgPreview.classList.add('photo-card-img')
                 newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
+                newImgPreview.addEventListener('click', () => {
+
+                    photoId = photo.unsplashId
+                    photoWidth = photo.width
+                    photoHeight = photo.height
+                    grayscale = photo.bAndW
+                    blur = photo.blur
+                    fetchPhoto()
+
+                })
                 newDeleteButton.classList.add('photo-card-button')
                 newDeleteButton.innerHTML = 'X'
                 newDeleteButton.name = photo.id
@@ -190,22 +192,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-                    newEditButton.name = photo.id
+                newEditButton.name = photo.id
 
-                    newEditButton.addEventListener('click', (e) => editPhoto(e))
-                    newButtonContainer.classList.add('saved-photo-buttons')
-
-
+                newEditButton.addEventListener('click', (e) => editPhoto(e))
+                newButtonContainer.classList.add('saved-photo-buttons')
 
 
-                    //Add Elements to new Div
-                    newPhotoCard.classList.add('photo-card')
-                    newButtonContainer.append(newEditButton, newDeleteButton)
-                    newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
 
-                    //Add new Photo Card to Saved Photos
 
-                    photoStorageContainer.append(newPhotoCard)
+                //Add Elements to new Div
+                newPhotoCard.classList.add('photo-card')
+                newButtonContainer.append(newEditButton, newDeleteButton)
+                newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
+
+                //Add new Photo Card to Saved Photos
+
+                photoStorageContainer.append(newPhotoCard)
 
 
 
@@ -229,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     photos.map((photo) => dbData.push(photo))
                 })
         }
+
         getDbData()
         console.log(dbData)
 
@@ -265,6 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "bAndW": grayscale
 
         }
+
+        console.log(photoData)
         fetch(dbUrl)
 
     }
