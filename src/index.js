@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         editModalForm.addEventListener('submit', (e) => patchPhoto(e,id))
 
         // patchPhoto(id)
- 
+
 
     }
 
@@ -282,8 +282,15 @@ document.addEventListener('DOMContentLoaded', () => {
      const patchPhoto = (e, id) => {
 
         e.preventDefault()
-
-        const editObject = {
+     // write if statment
+   
+     console.log(e.target.editName.value)
+     if  (e.target.editName.value === "" || e.target.editHeight.value === "" ||  e.target.editWidth.value === "" || e.target.editBlur.value === "" || e.target.editBAndW.checked === "") {
+        alert("Please fill out all fields!");
+    }
+            
+          else { 
+            const editObject = {
             "name": e.target.editName.value,
             "height": Number(e.target.editHeight.value),
             "width": Number(e.target.editWidth.value),
@@ -314,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             editModalForm.removeEventListener('submit',patchPhoto())
-    }
+    }}
 
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
