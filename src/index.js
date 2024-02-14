@@ -254,14 +254,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const photoData = {
             "id": uniqueID, //unique id that does not exist in db.json
             "unsplashId": photoId,
-            "name": photoNameInput, //Add an HTML element where user can input name
+            "name": photoNameInput.value, //Add an HTML element where user can input name
             "height": photoHeight,
             "width": photoWidth,
             "blur": blur,
             "bAndW": grayscale
 
         }
-
+console.log(photoData)
         function postName(){
             fetch(dbUrl, {
             method: "POST",
@@ -269,9 +269,69 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(photoData),
+            
+        }) 
+        .then(resp => resp.json())
+        .then(savedPhoto => {
 
-        });
-    }}
+            const newPhotoCard = document.createElement('div')
+            const newButtonContainer = document.createElement('div')
+            const newPhotoName = document.createElement('h3')
+            const newPhotoSize = document.createElement('h5')
+            const newBlurPreview = document.createElement('h5')
+            const newGrayscale = document.createElement('h5')
+            const newEditButton = document.createElement('button')
+            const newDeleteButton = document.createElement('button')
+            const newImgPreview = document.createElement('img')
+
+
+            //Input Data into new elements
+            newPhotoName.innerHTML = savedPhoto.name
+            newPhotoSize.innerHTML = `Width: ${savedPhoto.width}px <> Height: ${savedPhoto.height}px`
+            newGrayscale.innerHTML = `B&W: ${savedPhoto.bAndW ? 'Yes' : 'No'}`
+            newBlurPreview.innerHTML = `Blur: ${savedPhoto.blur}`
+            newImgPreview.classList.add('photo-card-img')
+            newImgPreview.src = `${url}/id/${savedPhoto.unsplashId}/600`
+            newImgPreview.addEventListener('click', () => {
+
+                photoId = savedPhoto.unsplashId
+                photoWidth = savedPhoto.width
+                photoHeight = savedPhoto.height
+                grayscale = savedPhoto.bAndW
+                blur = savedPhoto.blur
+                fetchPhoto()
+
+
+
+        
+        })
+        newDeleteButton.classList.add('photo-card-button')
+        newDeleteButton.innerHTML = 'X'
+        newDeleteButton.name = savedPhoto.id
+        newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
+        newEditButton.classList.add('photo-card-button')
+        newEditButton.name = savedPhoto.id
+        newEditButton.innerHTML = 'Edit'
+        newEditButton.name = savedPhoto.id
+        newEditButton.addEventListener('click', (e) => editPhoto(e))
+        newButtonContainer.classList.add('saved-photo-buttons')
+        newEditButton.name = savedPhoto.id
+        newEditButton.addEventListener('click', (e) => editPhoto(e))
+        newButtonContainer.classList.add('saved-photo-buttons')
+
+        
+        newPhotoCard.classList.add('photo-card')
+        newButtonContainer.append(newEditButton, newDeleteButton)
+        newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
+
+        
+        photoStorageContainer.append(newPhotoCard)
+
+        })
+        
+    }
+    postName()
+}
         
 
 
