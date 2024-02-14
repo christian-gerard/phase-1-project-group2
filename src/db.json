@@ -3,20 +3,20 @@
     {
       "id": "2",
       "unsplashId": 345,
-      "name": "Subway",
-      "height": 600,
-      "width": 1000,
-      "blur": 2,
+      "name": "Washington DC",
+      "height": 500,
+      "width": 500,
+      "blur": 1,
       "bAndW": true
     },
     {
       "id": "5",
       "unsplashId": 122,
-      "name": "Capitol",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
+      "name": "Washington DC",
+      "height": 500,
+      "width": 500,
+      "blur": 1,
+      "bAndW": true
     }
   ]
 }
