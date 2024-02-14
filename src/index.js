@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let photoWidth = 1600
     let photoHeight = 1000
  
-
-
-
-
     //DOM Elements
     const randomPhoto = document.querySelector('#display-photo')
     const photoMessage = document.querySelector('#photo-message')
@@ -89,10 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     saveButton.addEventListener('click', () => savePhoto())
 
     modalExitButton.addEventListener('click', () => hideModal())
-
-
-    //Function Declarations
-
 
    //Function Declarations
 
@@ -174,6 +166,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 newBlurPreview.innerHTML = `Blur: ${photo.blur}`
                 newImgPreview.classList.add('photo-card-img')
                 newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
+                newImgPreview.addEventListener('click', () => {
+
+                    photoId = photo.unsplashId
+                    photoWidth = photo.width
+                    photoHeight = photo.height
+                    grayscale = photo.bAndW
+                    blur = photo.blur
+                    fetchPhoto()
+
+                })
                 newDeleteButton.classList.add('photo-card-button')
                 newDeleteButton.innerHTML = 'X'
                 newDeleteButton.name = photo.id
@@ -181,31 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 newEditButton.classList.add('photo-card-button')
                 newEditButton.name = photo.id
                 newEditButton.innerHTML = 'Edit'
-
-
                 newEditButton.name = photo.id
-
+                newEditButton.addEventListener('click', (e) => editPhoto(e))
+                newButtonContainer.classList.add('saved-photo-buttons')
+                newEditButton.name = photo.id
                 newEditButton.addEventListener('click', (e) => editPhoto(e))
                 newButtonContainer.classList.add('saved-photo-buttons')
 
+                //Add Elements to new Div
+                newPhotoCard.classList.add('photo-card')
+                newButtonContainer.append(newEditButton, newDeleteButton)
+                newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
 
-
-                    newEditButton.name = photo.id
-
-                    newEditButton.addEventListener('click', (e) => editPhoto(e))
-                    newButtonContainer.classList.add('saved-photo-buttons')
-
-
-
-
-                    //Add Elements to new Div
-                    newPhotoCard.classList.add('photo-card')
-                    newButtonContainer.append(newEditButton, newDeleteButton)
-                    newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
-
-                    //Add new Photo Card to Saved Photos
-
-                    photoStorageContainer.append(newPhotoCard)
+                //Add new Photo Card to Saved Photos
+                photoStorageContainer.append(newPhotoCard)
 
 
 
@@ -229,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     photos.map((photo) => dbData.push(photo))
                 })
         }
+
         getDbData()
         console.log(dbData)
 
@@ -265,6 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "bAndW": grayscale
 
         }
+
+        console.log(photoData)
         fetch(dbUrl)
 
     }
@@ -275,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayModal()
 
         const id = e.target.name
-
+        console.log(e.target)
         editModalForm.addEventListener('submit', (e) => patchPhoto(e,id))
 
         // patchPhoto(id)
@@ -303,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "blur": Number(e.target.editBlur.value),
             "bAndW": e.target.editBAndW.checked
         }
-        debugger
+
         const editUrl = `http://localhost:3000/photos/${id}`;
 
         // Define the data to be updated
@@ -325,13 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => {
                 console.error('Error:', err);
             });
-        
-        
-    }
-    
 
-        
-    }
+            editModalForm.removeEventListener('submit',patchPhoto())
+    }}
 
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
@@ -359,40 +349,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const displayLoading = () => {
         photoMessage.classList.add('display')
-
-
-
     }
 
     const hideLoading = () => {
-
         photoMessage.classList.remove('display')
     }
 
     const displayModal = () => {
         editModal.classList.remove('modalOff')
         editModal.classList.add('modal')
-
     }
 
     const hideModal = () => {
-        editModalForm.removeEventListener('submit',patchPhoto())
         editModal.classList.remove('modal')
         editModal.classList.add('modalOff')
-
-
-
     }
 
     const main = () => {
         //Get the photo from lorem picsum
-
         fetchPhotoArray()
         fetchPhoto()
         renderSavedPhotos()
-
-
-
     }
 
 

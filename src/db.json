@@ -1,22 +1,38 @@
 {
   "photos": [
     {
+<<<<<<< HEAD
       "id": "4",
       "unsplashId": 444,
       "name": "pedro",
       "height": 500,
       "width": 600,
+=======
+      "id": "2",
+      "unsplashId": 345,
+      "name": "Washington DC",
+      "height": 500,
+      "width": 500,
+>>>>>>> b211e3a0a7851dc50b007bc54dfc7c7ce5581332
       "blur": 1,
       "bAndW": true
     },
     {
       "id": "5",
       "unsplashId": 122,
+<<<<<<< HEAD
       "name": "",
       "height": 0,
       "width": 0,
       "blur": 0,
       "bAndW": false
+=======
+      "name": "Washington DC",
+      "height": 500,
+      "width": 500,
+      "blur": 1,
+      "bAndW": true
+>>>>>>> b211e3a0a7851dc50b007bc54dfc7c7ce5581332
     }
   ]
 }
