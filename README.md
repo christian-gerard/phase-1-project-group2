@@ -1,5 +1,5 @@
 
-## FotoForge
+## ![FotoForge] (fotoForgeTitle.png)
 ### Create and Save beautiful images
 
 ## Table of Contents 
