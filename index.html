@@ -21,15 +21,21 @@
       <input class='editModalInput' placeholder="Name" name="editName"></input>
       <input class='editModalInput' placeholder="Width" name="editWidth"></input>
       <input class='editModalInput' placeholder="Height" name="editHeight"></input>
-      <input class='editModalInput' placeholder="B&W" ></input>
-      <div class="photo-input">
+
+      <div class="editModalInput">
         <h2>Black & White</h2>
         <label class="switch">
           <input name="editBAndW" type="checkbox">
           <span class="slider round"></span>
         </label>
       </div>
-      <input class='editModalInput' placeholder="Blur" name="editBlur"></input>
+
+      <div class="editModalInput">
+        <h2> Blur</h2>
+      <input id="blur-input" name="editBlur" type="number" min="0" max="10" placeholder="0-10">
+      </div>
+
+
       <button class='editModalButton'>Edit Photo</button>
     </form>
 

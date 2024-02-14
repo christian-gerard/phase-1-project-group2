@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const hideModal = () => {
-        editModalForm.removeEventListener('submit')
+        editModalForm.removeEventListener('submit',patchPhoto())
         editModal.classList.remove('modal')
         editModal.classList.add('modalOff')
 
