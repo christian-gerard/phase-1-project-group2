@@ -18,9 +18,23 @@
     <button id='modal-exit-button' class="close">X</button>
     <h1 id="edit-modal-title">Edit Photo</h1>
     <form id="edit-photo-form"> 
-      <input class='editModalInput' placeholder="Name" name="editName"></input>
-      <input class='editModalInput' placeholder="Width" name="editWidth"></input>
-      <input class='editModalInput' placeholder="Height" name="editHeight"></input>
+      <div class='editModalInput'>
+        <h2>Name</h2>
+        <input  placeholder="Insert New Name" name="editName"></input>
+      </div>
+
+      <div class='editModalInput'>
+        <h2>Width</h2>
+        <input  placeholder="Insert New Width" name="editWidth"></input>
+
+      </div>
+
+      <div class='editModalInput'>
+        <h2>Height</h2>
+        <input  placeholder="Insert New Height" name="editHeight"></input>
+
+      </div>
+
 
       <div class="editModalInput">
         <h2>Black & White</h2>
@@ -35,8 +49,9 @@
       <input id="blur-input" name="editBlur" type="number" min="0" max="10" placeholder="0-10">
       </div>
 
-
-      <button class='editModalButton'>Edit Photo</button>
+      <div class="editModalInput">
+        <button class='editModalButton' id="submitEditForm">Edit Photo</button>
+      </div>
     </form>
 
   </div>

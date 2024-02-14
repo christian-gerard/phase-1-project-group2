@@ -175,39 +175,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         blur = photo.blur
                         fetchPhoto()
 
-                    })
-                    newDeleteButton.classList.add('photo-card-button')
-                    newDeleteButton.innerHTML = 'X'
-                    newDeleteButton.name = photo.id
-                    newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
-                    newEditButton.classList.add('photo-card-button')
-                    newEditButton.name = photo.id
-                    newEditButton.innerHTML = 'Edit'
 
+ 
+                
+                })
+                newDeleteButton.classList.add('photo-card-button')
+                newDeleteButton.innerHTML = 'X'
+                newDeleteButton.name = photo.id
+                newDeleteButton.addEventListener('click', (e) => deletePhoto(e))
+                newEditButton.classList.add('photo-card-button')
+                newEditButton.name = photo.id
+                newEditButton.innerHTML = 'Edit'
+                newEditButton.name = photo.id
+                newEditButton.addEventListener('click', (e) => editPhoto(e))
+                newButtonContainer.classList.add('saved-photo-buttons')
+                newEditButton.name = photo.id
+                newEditButton.addEventListener('click', (e) => editPhoto(e))
+                newButtonContainer.classList.add('saved-photo-buttons')
 
-                    newEditButton.name = photo.id
+                //Add Elements to new Div
+                newPhotoCard.classList.add('photo-card')
+                newButtonContainer.append(newEditButton, newDeleteButton)
+                newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
 
-                    newEditButton.addEventListener('click', (e) => editPhoto(e))
-                    newButtonContainer.classList.add('saved-photo-buttons')
-
-
-
-                    newEditButton.name = photo.id
-
-                    newEditButton.addEventListener('click', (e) => editPhoto(e))
-                    newButtonContainer.classList.add('saved-photo-buttons')
-
-
-
-
-                    //Add Elements to new Div
-                    newPhotoCard.classList.add('photo-card')
-                    newButtonContainer.append(newEditButton, newDeleteButton)
-                    newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
-
-                    //Add new Photo Card to Saved Photos
-
-                    photoStorageContainer.append(newPhotoCard)
+                //Add new Photo Card to Saved Photos
+                photoStorageContainer.append(newPhotoCard)
 
 
 
@@ -287,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const editPhoto = (e) => {
             displayModal()
 
+
             const id = e.target.name
 
             editModalForm.addEventListener('submit', (e) => patchPhoto(e, id))
@@ -294,13 +287,31 @@ document.addEventListener('DOMContentLoaded', () => {
             // patchPhoto(id)
 
 
+
         }
+
 
 
         // PEDRO -> PATCH Request
         const patchPhoto = (e, id) => {
 
-            e.preventDefault()
+ 
+        e.preventDefault()
+     // write if statment
+   
+     console.log(e.target.editName.value)
+     if  (e.target.editName.value === "" || e.target.editHeight.value === "" ||  e.target.editWidth.value === "" || e.target.editBlur.value === "" || e.target.editBAndW.checked === "") {
+        alert("Please fill out all fields!");
+    }
+            
+          else { 
+            const editObject = {
+            "name": e.target.editName.value,
+            "height": Number(e.target.editHeight.value),
+            "width": Number(e.target.editWidth.value),
+            "blur": Number(e.target.editBlur.value),
+            "bAndW": e.target.editBAndW.checked
+        }
 
             const editObject = {
                 "name": e.target.editName.value,
@@ -313,6 +324,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const editUrl = `http://localhost:3000/photos/${id}`;
 
             // Define the data to be updated
+
+
+            editModalForm.removeEventListener('submit',patchPhoto())
+    }}
 
 
             fetch(editUrl, {
@@ -359,43 +374,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
 
-        const displayLoading = () => {
-            photoMessage.classList.add('display')
 
+    const displayLoading = () => {
+        photoMessage.classList.add('display')
+    }
 
+    const hideLoading = () => {
+        photoMessage.classList.remove('display')
+    }
 
-        }
+    const displayModal = () => {
+        editModal.classList.remove('modalOff')
+        editModal.classList.add('modal')
+    }
 
-        const hideLoading = () => {
+    const hideModal = () => {
+        editModal.classList.remove('modal')
+        editModal.classList.add('modalOff')
+    }
 
-            photoMessage.classList.remove('display')
-        }
-
-        const displayModal = () => {
-            editModal.classList.remove('modalOff')
-            editModal.classList.add('modal')
-
-        }
-
-        const hideModal = () => {
-
-            editModal.classList.remove('modal')
-            editModal.classList.add('modalOff')
-
-
-
-        }
-
-        const main = () => {
-            //Get the photo from lorem picsum
-
-            fetchPhotoArray()
-            fetchPhoto()
-            renderSavedPhotos()
-
-
-
-        }
+    const main = () => {
+        //Get the photo from lorem picsum
+        fetchPhotoArray()
+        fetchPhoto()
+        renderSavedPhotos()
+    }
 
 
         //Invoke functionality
