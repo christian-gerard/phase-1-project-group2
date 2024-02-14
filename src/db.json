@@ -1,38 +1,106 @@
 {
   "photos": [
     {
-<<<<<<< HEAD
+
       "id": "4",
       "unsplashId": 444,
       "name": "pedro",
       "height": 500,
       "width": 600,
-=======
-      "id": "2",
-      "unsplashId": 345,
-      "name": "Washington DC",
-      "height": 500,
-      "width": 500,
->>>>>>> b211e3a0a7851dc50b007bc54dfc7c7ce5581332
+
       "blur": 1,
       "bAndW": true
     },
     {
       "id": "5",
       "unsplashId": 122,
-<<<<<<< HEAD
+
       "name": "",
       "height": 0,
       "width": 0,
       "blur": 0,
       "bAndW": false
-=======
-      "name": "Washington DC",
-      "height": 500,
-      "width": 500,
-      "blur": 1,
-      "bAndW": true
->>>>>>> b211e3a0a7851dc50b007bc54dfc7c7ce5581332
+    },
+    {
+      "id": "2i2b614bkup",
+      "unsplashId": 662,
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "c7anbp1wpj6",
+      "unsplashId": 455,
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "bfzsjwnj3v",
+      "unsplashId": 1,
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "lmm2ug465ui",
+      "unsplashId": 398,
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "s3sca2vin9",
+      "unsplashId": 157,
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "aiws5f9734e",
+      "unsplashId": 226,
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "vla622kmt8q",
+      "unsplashId": "846",
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "ztv8pcu6d8l",
+      "unsplashId": 488,
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
+    },
+    {
+      "id": "ce7zd6l0xo7",
+      "unsplashId": "1042",
+      "name": "Zoom BackGround",
+      "height": 1000,
+      "width": 1600,
+      "blur": 0,
+      "bAndW": false
     }
   ]
 }
