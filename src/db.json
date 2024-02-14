@@ -1,31 +1,22 @@
 {
   "photos": [
     {
-      "id": "2",
-      "unsplashId": 345,
-      "name": "NEW",
-      "height": 12,
-      "width": 12,
-      "blur": 0,
-      "bAndW": true
-    },
-    {
       "id": "4",
       "unsplashId": 444,
-      "name": "Testing",
-      "height": 1200,
-      "width": 1200,
-      "blur": 5,
+      "name": "pedro",
+      "height": 500,
+      "width": 600,
+      "blur": 1,
       "bAndW": true
     },
     {
       "id": "5",
       "unsplashId": 122,
-      "name": "WallPaper",
-      "height": 1000,
-      "width": 1600,
+      "name": "",
+      "height": 0,
+      "width": 0,
       "blur": 0,
-      "bAndW": true
+      "bAndW": false
     }
   ]
 }
