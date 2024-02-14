@@ -3,19 +3,19 @@
     {
       "id": "2",
       "unsplashId": 345,
-      "name": "Testing",
-      "height": 0,
-      "width": 500,
-      "blur": 4,
+      "name": "Capitol",
+      "height": 1000,
+      "width": 1600,
+      "blur": 6,
       "bAndW": true
     },
     {
       "id": "5",
       "unsplashId": 122,
-      "name": "SHWEEET",
-      "height": 500,
-      "width": 500,
-      "blur": 5,
+      "name": "Capitol",
+      "height": 1000,
+      "width": 1600,
+      "blur": 6,
       "bAndW": true
     }
   ]
