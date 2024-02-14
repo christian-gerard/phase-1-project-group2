@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let photoId = Math.floor(Math.random() * 700)
     let photoWidth = 1600
     let photoHeight = 1000
-    
-  
+ 
+
 
 
 
@@ -60,24 +60,24 @@ document.addEventListener('DOMContentLoaded', () => {
     heightScale.addEventListener('input', (event) => {
         const newHeight = parseInt(event.target.value);
 
-        if(newHeight > 1000) {
+        if (newHeight > 1000) {
             alert('Please Input a height below 1000px')
         } else {
             photoHeight = newHeight;
         }
-        
+
 
     });
-  
+
     widthScale.addEventListener('input', (event) => {
         const newWidth = parseInt(event.target.value);
 
-        if(newWidth > 1600) {
+        if (newWidth > 1600) {
             alert('Please Input a width below 1600px')
         } else {
             photoWidth = newWidth;
         }
-        
+
 
     });
 
@@ -90,39 +90,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalExitButton.addEventListener('click', () => hideModal())
 
- 
+
+    //Function Declarations
+
 
    //Function Declarations
+
     const fetchPhotoArray = () => {
-        photoPreviewBar.innerHTML =''
+        photoPreviewBar.innerHTML = ''
 
         const randomPage = Math.floor(Math.random() * 100)
 
 
 
         fetch(`${arrayUrl}&page=${randomPage}`)
-        .then(resp => resp.json())
-        .then(photos => {
-            photos.map((photo) => {
+            .then(resp => resp.json())
+            .then(photos => {
+                photos.map((photo) => {
 
 
-                const previewImg = document.createElement('img')
-                const newImgUrl = `${photo.download_url.slice(0,25)}${photo.id}/200`
+                    const previewImg = document.createElement('img')
+                    const newImgUrl = `${photo.download_url.slice(0, 25)}${photo.id}/200`
 
 
 
-                previewImg.name = photo.id
-                previewImg.src = newImgUrl
-                previewImg.classList.add('photo-bar-img')
+                    previewImg.name = photo.id
+                    previewImg.src = newImgUrl
+                    previewImg.classList.add('photo-bar-img')
 
-                previewImg.addEventListener('click', (e) => {
-                    photoId = e.target.name
-                    fetchPhoto()
-                    console.log(e.target.name)
+                    previewImg.addEventListener('click', (e) => {
+                        photoId = e.target.name
+                        fetchPhoto()
+                        console.log(e.target.name)
+                    })
+                    photoPreviewBar.appendChild(previewImg)
                 })
-                photoPreviewBar.appendChild(previewImg)
             })
-        })
 
     }
 
@@ -130,11 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         randomPhoto.src = ''
         displayLoading()
-        
+
         fetch(`${url}/id/${photoId}/${photoWidth}/${photoHeight}/?${grayscale ? 'grayscale&' : ''}${blur ? 'blur=' + blur : ''}`)
             .then(resp => {
-                
-                
+
+
                 const imgUrl = resp['url']
 
                 hideLoading()
@@ -185,30 +188,85 @@ document.addEventListener('DOMContentLoaded', () => {
                 newEditButton.addEventListener('click', (e) => editPhoto(e))
                 newButtonContainer.classList.add('saved-photo-buttons')
 
- 
 
 
-                //Add Elements to new Div
-                newPhotoCard.classList.add('photo-card')
-                newButtonContainer.append(newEditButton, newDeleteButton)
-                newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
-                
-                //Add new Photo Card to Saved Photos
+                    newEditButton.name = photo.id
 
-                photoStorageContainer.append(newPhotoCard)
-
-
-               
+                    newEditButton.addEventListener('click', (e) => editPhoto(e))
+                    newButtonContainer.classList.add('saved-photo-buttons')
 
 
 
+
+                    //Add Elements to new Div
+                    newPhotoCard.classList.add('photo-card')
+                    newButtonContainer.append(newEditButton, newDeleteButton)
+                    newPhotoCard.append(newButtonContainer, newPhotoName, newPhotoSize, newBlurPreview, newGrayscale, newImgPreview)
+
+                    //Add new Photo Card to Saved Photos
+
+                    photoStorageContainer.append(newPhotoCard)
+
+
+
+
+
+
+                })
             })
-        })
     }
 
     // KIA -> POST Request
+
     const savePhoto = () => {
-        console.log('PHOTO SAVED')
+        const dbData = []
+
+        const getDbData = () => {
+            fetch(dbUrl)
+                .then(resp => resp.json())
+                .then(photos => {
+
+                    photos.map((photo) => dbData.push(photo))
+                })
+        }
+        getDbData()
+        console.log(dbData)
+
+
+
+        const generateUniqueId = () => {
+
+            return Math.random().toString(36).substring(2);
+        };
+
+
+        const idExists = (id) => {
+            return dbData.some(item => item.id === id);
+        };
+
+        const rerouteGeneratedId = () => {
+            let id;
+            do {
+                id = generateUniqueId();
+            } while (idExists(id));
+            return id;
+        };
+
+        const uniqueID = rerouteGeneratedId();
+        console.log('Unique ID:', uniqueID);
+
+        const photoData = {
+            "id": uniqueID, //unique id that does not exist in db.json
+            "unsplashId": photoId,
+            "name": "Zoom BackGround", //Add an HTML element where user can input name
+            "height": photoHeight,
+            "width": photoWidth,
+            "blur": blur,
+            "bAndW": grayscale
+
+        }
+        fetch(dbUrl)
+
     }
 
 
@@ -224,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
 
     }
+
 
      // PEDRO -> PATCH Request
      const patchPhoto = (e, id) => {
@@ -241,6 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Define the data to be updated
     
+
         fetch(editUrl, {
             method: 'PATCH',
             headers: {
@@ -248,6 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(editObject)
         })
+<<<<<<< HEAD
         .then(resp => {
             if (!resp.ok) {
              console.log("did not work")
@@ -259,8 +320,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         editModalForm.removeEventListener('submit',patchPhoto())
+=======
+            .then(resp => {
+                if (!resp.ok) {
+                    console.log("did not work")
+                }
+                console.log('EDIT SUCCESSFUL');
+            })
+            .catch(err => {
+                console.error('Error:', err);
+            });
+>>>>>>> 44d5ddc03bdc2897393ab95cd869a7ae83bef8b2
     }
-   
+
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
         console.log(e.target.name)
@@ -272,15 +344,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json',
             },
         })
-        .then( resp => {
-            if(!resp.ok) {
-                throw new Error('ERROR');
-            }
-            console.log('DELETE SUCCESSFUL')
-        })
-        .catch(err => {
-            console.error('Error:', err)
-        })
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error('ERROR');
+                }
+                console.log('DELETE SUCCESSFUL')
+            })
+            .catch(err => {
+                console.error('Error:', err)
+            })
 
 
     }
@@ -318,8 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchPhotoArray()
         fetchPhoto()
         renderSavedPhotos()
-        
-       
+
+
 
     }
 
