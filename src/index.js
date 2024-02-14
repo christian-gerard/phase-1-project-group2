@@ -26,12 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const heightScale = document.getElementById('photo-height');
     const photoStorageContainer = document.querySelector('#photo-storage-container')
     const saveButton = document.querySelector('#save-button')
-
-   
-
-
-
-
     const editModal = document.querySelector('#editModal')
     const modalExitButton = document.querySelector('#modal-exit-button')
 
@@ -223,16 +217,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(editModal)
 
-        
+    }
 
 
      // PEDRO -> PATCH Request
-     const editPhoto = (e) => {
+     const edittPhoto = (e) => {
         const editUrl = `http://localhost:3000/photos/${e.target.name}`;
         console.log(editUrl)
         // Define the data to be updated
         const editData = {
-          "height": 400
+          "height": 400,
           "width": 400
         };
     
