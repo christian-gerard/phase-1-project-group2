@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveButton = document.querySelector('#save-button')
     const editModal = document.querySelector('#editModal')
     const modalExitButton = document.querySelector('#modal-exit-button')
+    const editModalForm = document.querySelector('#edit-photo-form')
 
 
     //Event Listeners
@@ -88,6 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
     saveButton.addEventListener('click', () => savePhoto())
 
     modalExitButton.addEventListener('click', () => hideModal())
+
+ 
 
    //Function Declarations
     const fetchPhotoArray = () => {
@@ -163,8 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 //Input Data into new elements
                 newPhotoName.innerHTML = photo.name
-                newPhotoSize.innerHTML = `Width: ${photo.width} Height: ${photo.height}`
-                newGrayscale.innerHTML = `B&W: ${grayscale ? 'Yes' : 'No'}`
+                newPhotoSize.innerHTML = `Width: ${photo.width}px <> Height: ${photo.height}px`
+                newGrayscale.innerHTML = `B&W: ${photo.bAndW ? 'Yes' : 'No'}`
                 newBlurPreview.innerHTML = `Blur: ${photo.blur}`
                 newImgPreview.classList.add('photo-card-img')
                 newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
@@ -211,31 +214,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // PEDRO -> PATCH Request
     const editPhoto = (e) => {
-
         displayModal()
+
         const id = e.target.name
 
-        console.log(editModal)
+        editModalForm.addEventListener('submit', (e) => patchPhoto(e,id))
+
+        // patchPhoto(id)
+ 
 
     }
 
-
      // PEDRO -> PATCH Request
-     const edittPhoto = (e) => {
-        const editUrl = `http://localhost:3000/photos/${e.target.name}`;
-        console.log(editUrl)
+     const patchPhoto = (e, id) => {
+
+        e.preventDefault()
+
+        const editObject = {
+            "name": e.target.editName.value,
+            "height": Number(e.target.editHeight.value),
+            "width": Number(e.target.editWidth.value),
+            "blur": Number(e.target.editBlur.value),
+            "bAndW": e.target.editBAndW.checked
+        }
+        debugger
+        const editUrl = `http://localhost:3000/photos/${id}`;
+
         // Define the data to be updated
-        const editData = {
-          "height": 400,
-          "width": 400
-        };
     
         fetch(editUrl, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(editData)
+            body: JSON.stringify(editObject)
         })
         .then(resp => {
             if (!resp.ok) {
@@ -248,8 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
    
-
-
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
         console.log(e.target.name)
@@ -289,11 +299,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayModal = () => {
         editModal.classList.remove('modalOff')
         editModal.classList.add('modal')
+
     }
 
     const hideModal = () => {
+        editModalForm.removeEventListener('submit',patchPhoto())
         editModal.classList.remove('modal')
         editModal.classList.add('modalOff')
+
+
+
     }
 
     const main = () => {

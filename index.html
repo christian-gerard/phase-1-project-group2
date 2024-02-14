@@ -17,10 +17,27 @@
   <div id="editModal" class="modalOff">
     <button id='modal-exit-button' class="close">X</button>
     <h1 id="edit-modal-title">Edit Photo</h1>
-    <input class='editModalInput' placeholder="width"></input>
-    <input class='editModalInput' placeholder="height"></input>
-    <input class='editModalInput' placeholder="B&W"></input>
-    <input class='editModalInput' placeholder="Blur"></input>
+    <form id="edit-photo-form"> 
+      <input class='editModalInput' placeholder="Name" name="editName"></input>
+      <input class='editModalInput' placeholder="Width" name="editWidth"></input>
+      <input class='editModalInput' placeholder="Height" name="editHeight"></input>
+
+      <div class="editModalInput">
+        <h2>Black & White</h2>
+        <label class="switch">
+          <input name="editBAndW" type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="editModalInput">
+        <h2> Blur</h2>
+      <input id="blur-input" name="editBlur" type="number" min="0" max="10" placeholder="0-10">
+      </div>
+
+
+      <button class='editModalButton'>Edit Photo</button>
+    </form>
 
   </div>
 
