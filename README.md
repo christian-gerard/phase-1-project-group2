@@ -20,13 +20,12 @@ Get ready to embark on a journey of visual exploration and customization, turnin
 
 ## Features
 
-- The application provides a preview bar of additional images for selection.
-- Randomly generated photos for interactive customization.
-- Adjust height and width of the photos.
-- Apply blur effect for visual aesthetics.
-- Convert photos to black and white for a classic look.
+- Generate 10 random photos for selection
+- Adjust height and width of the photos
+- Apply blur effect for visual aesthetics
+- Convert photos to black and white for a classic look
 - Save your favorite photos under 'My Photos'
-- Edit saved photos
+- Edit saved photos to dial in your aesthetic
 - Delete unwanted saved photos
 
 ## Installation
