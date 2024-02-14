@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveButton = document.querySelector('#save-button')
     const editModal = document.querySelector('#editModal')
     const modalExitButton = document.querySelector('#modal-exit-button')
-    const newPhotoName = document. querySelector('#"photo-name-input"')
     const editModalForm = document.querySelector('#edit-photo-form')
 
 
