@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "bAndW": grayscale
 
         }
-console.log(photoData)
+
         function postName(){
             fetch(dbUrl, {
             method: "POST",
@@ -336,50 +336,38 @@ console.log(photoData)
         
     }
     postName()
-}
+    }
         
         // PEDRO -> PATCH Request
     const editPhoto = (e) => {
 
-
-            displayModal()
-            const id = e.target.name
-
-        editModalForm.name = id
-
-
-
-           
-
-            // patchPhoto(id)
-
-
+        displayModal()
+        editModalForm.name = e.target.name
 
     }
 
         // PEDRO -> PATCH Request
     const patchPhoto = (e) => {
-        e.preventDefault()
-     // write if statment
-   
 
-     if  (e.target.editName.value === "" || e.target.editHeight.value === "" ||  e.target.editWidth.value === "" || e.target.editBlur.value === "" || e.target.editBAndW.checked === "") {
-        alert("Please fill out all fields!");
-    }
-            
-          else { 
+        e.preventDefault()
+
+        const editedPhotoCard = document.getElementById(e.target.name)
+        
+
+
+        if(e.target.editName.value === "" || e.target.editHeight.value === "" ||  e.target.editWidth.value === "" || e.target.editBlur.value === "" || e.target.editBAndW.checked === "") {
+            alert("Please fill out all fields!");
+        } else {
+                
             const editObject = {
             "name": e.target.editName.value,
             "height": Number(e.target.editHeight.value),
             "width": Number(e.target.editWidth.value),
             "blur": Number(e.target.editBlur.value),
             "bAndW": e.target.editBAndW.checked
-        }
-
-        
+            }
 
             const editUrl = `http://localhost:3000/photos/${editModalForm.name}`;
-
 
             fetch(editUrl, {
                 method: 'PATCH',
@@ -388,15 +376,33 @@ console.log(photoData)
                 },
                 body: JSON.stringify(editObject)
             })
-                .then(resp => {
-                    if (!resp.ok) {
-                        console.log("did not work")
-                    }
-                    console.log('EDIT SUCCESSFUL');
-                })
-                .catch(err => {
-                    console.error('Error:', err);
-                });
+            .then(resp => {
+                if (!resp.ok) {
+                    console.log("did not work")
+                }
+                console.log('EDIT SUCCESSFUL');
+    
+                editedPhotoCard.innerHTML = `
+                <div class='saved-photo-buttons'>
+                    <button class='photo-card-button' name='4'>
+                    Edit
+                    </button>
+                    <button class='photo-card-button' name='4'>
+                    X
+                    </button>
+                </div>
+
+                <h3> ${editObject.name} </h3>
+                <h5> Width: ${editObject.width}px <> Height: ${editObject.height}</h5>
+                <h5>Blur: ${editObject.blur} </h5>
+                <h5>B&W: ${editObject.bAndW ? 'Yes' : 'No'}</h5>
+                <img class='photo-card-img' src='https://picsum.photos/id/625/600'>
+                `
+
+            })
+            .catch(err => {
+                console.error('Error:', err);
+            });
 
             // Define the data to be updated
             
@@ -428,7 +434,6 @@ console.log(photoData)
 
     }
 
-
     const displayLoading = () => {
         photoMessage.classList.add('display')
     }
@@ -456,8 +461,6 @@ console.log(photoData)
         fetchPhoto()
         renderSavedPhotos()
     }
-
-
         //Invoke functionality
         main()
 

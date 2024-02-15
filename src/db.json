@@ -12,10 +12,10 @@
     {
       "id": "5",
       "unsplashId": 122,
-      "name": "lala",
-      "height": 400,
-      "width": 600,
-      "blur": 3,
+      "name": "AAA",
+      "height": 111,
+      "width": 111,
+      "blur": 1,
       "bAndW": true
     },
     {
@@ -30,19 +30,19 @@
     {
       "id": "bfzsjwnj3v",
       "unsplashId": 1,
-      "name": "COMPUTER",
-      "height": 400,
-      "width": 400,
-      "blur": 2,
+      "name": "HEllo",
+      "height": 1,
+      "width": 1,
+      "blur": 1,
       "bAndW": true
     },
     {
       "id": "lmm2ug465ui",
       "unsplashId": 398,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
+      "name": "555",
+      "height": 555,
+      "width": 555,
+      "blur": 3,
       "bAndW": false
     },
     {
