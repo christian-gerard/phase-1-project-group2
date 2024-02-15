@@ -111,6 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     previewImg.classList.add('photo-bar-img')
 
                     previewImg.addEventListener('click', (e) => {
+                        grayscale = false
+                        blur = 0
+                        photoWidth = 1600
+                        photoHeight = 1000
                         photoId = e.target.name
                         fetchPhoto()
                         console.log(e.target.name)
@@ -400,9 +404,10 @@ console.log(photoData)
 
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
-        console.log(e.target.name)
+        console.log(e.target.parentNode.parentNode)
+
         const deleteUrl = `http://localhost:3000/photos/${e.target.name}`
-        console.log(e)
+
         fetch(deleteUrl, {
             method: 'DELETE',
             headers: {
@@ -414,6 +419,7 @@ console.log(photoData)
                     throw new Error('ERROR');
                 }
                 console.log('DELETE SUCCESSFUL')
+                e.target.parentNode.parentNode.remove()
             })
             .catch(err => {
                 console.error('Error:', err)
