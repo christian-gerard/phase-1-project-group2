@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Fetch variables
     const url = 'https://picsum.photos'
-    const arrayUrl = 'https://picsum.photos/v2/list?limit=10'
+    const arrayUrl = 'https://picsum.photos/v2/list?limit=12'
     const dbUrl = 'http://localhost:3000/photos'
     let grayscale = false
     let blur = 0
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         photoHeight = 1000
                         photoId = e.target.name
                         fetchPhoto()
-                        console.log(e.target.name)
+
                     })
                     photoPreviewBar.appendChild(previewImg)
                 })
