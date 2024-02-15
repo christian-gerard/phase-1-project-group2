@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Fetch variables
     const url = 'https://picsum.photos'
-    const arrayUrl = 'https://picsum.photos/v2/list?limit=10'
+    const arrayUrl = 'https://picsum.photos/v2/list?limit=12'
     const dbUrl = 'http://localhost:3000/photos'
     let grayscale = false
     let blur = 0
@@ -111,9 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     previewImg.classList.add('photo-bar-img')
 
                     previewImg.addEventListener('click', (e) => {
+                        grayscale = false
+                        blur = 0
+                        photoWidth = 1600
+                        photoHeight = 1000
                         photoId = e.target.name
                         fetchPhoto()
-                        console.log(e.target.name)
+
                     })
                     photoPreviewBar.appendChild(previewImg)
                 })
@@ -166,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     newGrayscale.innerHTML = `B&W: ${photo.bAndW ? 'Yes' : 'No'}`
                     newBlurPreview.innerHTML = `Blur: ${photo.blur}`
                     newImgPreview.classList.add('photo-card-img')
+                    newImgPreview.id = photo.unsplashId
                     newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
                     newImgPreview.addEventListener('click', () => {
 
@@ -262,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "bAndW": grayscale
 
         }
-console.log(photoData)
+
         function postName(){
             fetch(dbUrl, {
             method: "POST",
@@ -332,50 +337,42 @@ console.log(photoData)
         
     }
     postName()
-}
+    }
         
         // PEDRO -> PATCH Request
     const editPhoto = (e) => {
 
-
-            displayModal()
-            const id = e.target.name
-
-        editModalForm.name = id
-
-
-
-           
-
-            // patchPhoto(id)
-
-
+        displayModal()
+        editModalForm.name = e.target.name
 
     }
 
         // PEDRO -> PATCH Request
     const patchPhoto = (e) => {
-        e.preventDefault()
-     // write if statment
-   
 
-     if  (e.target.editName.value === "" || e.target.editHeight.value === "" ||  e.target.editWidth.value === "" || e.target.editBlur.value === "" || e.target.editBAndW.checked === "") {
-        alert("Please fill out all fields!");
-    }
-            
-          else { 
+        e.preventDefault()
+
+        const editedPhotoCard = document.getElementById(e.target.name)
+
+        const unsplashIdForImg = editedPhotoCard.querySelector('img')
+        console.log()
+
+        
+
+
+        if(e.target.editName.value === "" || e.target.editHeight.value === "" ||  e.target.editWidth.value === "" || e.target.editBlur.value === "" || e.target.editBAndW.checked === "") {
+            alert("Please fill out all fields!");
+        } else {
+                
             const editObject = {
             "name": e.target.editName.value,
             "height": Number(e.target.editHeight.value),
             "width": Number(e.target.editWidth.value),
             "blur": Number(e.target.editBlur.value),
             "bAndW": e.target.editBAndW.checked
-        }
-
-        
+            }
 
             const editUrl = `http://localhost:3000/photos/${editModalForm.name}`;
-
 
             fetch(editUrl, {
                 method: 'PATCH',
@@ -384,25 +381,45 @@ console.log(photoData)
                 },
                 body: JSON.stringify(editObject)
             })
-                .then(resp => {
-                    if (!resp.ok) {
-                        console.log("did not work")
-                    }
-                    console.log('EDIT SUCCESSFUL');
-                })
-                .catch(err => {
-                    console.error('Error:', err);
-                });
+            .then(resp => {
+                if (!resp.ok) {
+                    console.log("did not work")
+                }
+                console.log('EDIT SUCCESSFUL');
+    
+                editedPhotoCard.innerHTML = `
+                <div class='saved-photo-buttons'>
+                    <button class='photo-card-button' name='4'>
+                    Edit
+                    </button>
+                    <button class='photo-card-button' name='4'>
+                    X
+                    </button>
+                </div>
+
+                <h3> ${editObject.name} </h3>
+                <h5> Width: ${editObject.width}px <> Height: ${editObject.height}px</h5>
+                <h5>Blur: ${editObject.blur} </h5>
+                <h5>B&W: ${editObject.bAndW ? 'Yes' : 'No'}</h5>
+                <img class='photo-card-img' src='https://picsum.photos/id/${unsplashIdForImg.id}/600'>
+                `
+                hideModal()
+            })
+            .catch(err => {
+                console.error('Error:', err);
+            });
 
             // Define the data to be updated
             
-    }}
+    }
+    }
 
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
-        console.log(e.target.name)
+        console.log(e.target.parentNode.parentNode)
+
         const deleteUrl = `http://localhost:3000/photos/${e.target.name}`
-        console.log(e)
+
         fetch(deleteUrl, {
             method: 'DELETE',
             headers: {
@@ -414,6 +431,7 @@ console.log(photoData)
                     throw new Error('ERROR');
                 }
                 console.log('DELETE SUCCESSFUL')
+                e.target.parentNode.parentNode.remove()
             })
             .catch(err => {
                 console.error('Error:', err)
@@ -421,7 +439,6 @@ console.log(photoData)
 
 
     }
-
 
     const displayLoading = () => {
         photoMessage.classList.add('display')
@@ -450,8 +467,6 @@ console.log(photoData)
         fetchPhoto()
         renderSavedPhotos()
     }
-
-
         //Invoke functionality
         main()
 

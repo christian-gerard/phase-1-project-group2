@@ -3,36 +3,6 @@
     {
       "id": "4",
       "unsplashId": 444,
-
-      "name": "pedro",
-      "height": 500,
-      "width": 600,
-      "blur": 1,
-      "bAndW": true
-    },
-    {
-      "id": "5",
-      "unsplashId": 122,
-
-      "name": "lala",
-      "height": 400,
-      "width": 600,
-      "blur": 3,
-
-      "bAndW": true
-    },
-    {
-      "id": "2i2b614bkup",
-      "unsplashId": 662,
-      "name": "MODDDDDALLLL",
-      "height": 2,
-      "width": 2,
-      "blur": 1,
-      "bAndW": true
-    },
-    {
-      "id": "c7anbp1wpj6",
-      "unsplashId": 455,
       "name": "HEllo",
       "height": 123,
       "width": 123,
@@ -40,84 +10,48 @@
       "bAndW": true
     },
     {
+      "id": "5",
+      "unsplashId": 122,
+      "name": "BBBBB",
+      "height": 166,
+      "width": 166,
+      "blur": 6,
+      "bAndW": true
+    },
+    {
       "id": "bfzsjwnj3v",
       "unsplashId": 1,
-      "name": "COMPUTER",
-      "height": 400,
-      "width": 400,
-      "blur": 2,
+      "name": "NEW PHOTO",
+      "height": 600,
+      "width": 600,
+      "blur": 4,
       "bAndW": true
     },
     {
       "id": "lmm2ug465ui",
       "unsplashId": 398,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
+      "name": "555",
+      "height": 555,
+      "width": 555,
+      "blur": 3,
       "bAndW": false
     },
     {
       "id": "s3sca2vin9",
       "unsplashId": 157,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
-    },
-    {
-      "id": "vla622kmt8q",
-      "unsplashId": "846",
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
-    },
-    {
-      "id": "ztv8pcu6d8l",
-      "unsplashId": 488,
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
-    },
-    {
-      "id": "ce7zd6l0xo7",
-      "unsplashId": "1042",
-      "name": "Zoom BackGround",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
-    },
-    {
-      "id": "dtp9fm5yq0g",
-      "unsplashId": 630,
-      "name": "kia",
-      "height": 1000,
-      "width": 1600,
-      "blur": 0,
-      "bAndW": false
-    },
-    {
-      "id": "jx3lyl8ee3s",
-      "unsplashId": 456,
-      "name": "joe",
-      "height": 600,
-      "width": 400,
-      "blur": 0,
+      "name": "SKATEBOARD",
+      "height": 11,
+      "width": 11,
+      "blur": 1,
       "bAndW": true
     },
     {
-      "id": "lpsnuanxev",
-      "unsplashId": "340",
-      "name": "juniper",
-      "height": 600,
-      "width": 500,
-      "blur": 0,
+      "id": "kqpgbhszch",
+      "unsplashId": 334,
+      "name": "New Photo PHOTO",
+      "height": 111,
+      "width": 111,
+      "blur": 4,
       "bAndW": true
     }
   ]
