@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     newGrayscale.innerHTML = `B&W: ${photo.bAndW ? 'Yes' : 'No'}`
                     newBlurPreview.innerHTML = `Blur: ${photo.blur}`
                     newImgPreview.classList.add('photo-card-img')
+                    newImgPreview.id = photo.unsplashId
                     newImgPreview.src = `${url}/id/${photo.unsplashId}/600`
                     newImgPreview.addEventListener('click', () => {
 
@@ -352,6 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault()
 
         const editedPhotoCard = document.getElementById(e.target.name)
+
+        const unsplashIdForImg = editedPhotoCard.querySelector('img')
+        console.log()
+
         
 
 
@@ -393,12 +398,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <h3> ${editObject.name} </h3>
-                <h5> Width: ${editObject.width}px <> Height: ${editObject.height}</h5>
+                <h5> Width: ${editObject.width}px <> Height: ${editObject.height}px</h5>
                 <h5>Blur: ${editObject.blur} </h5>
                 <h5>B&W: ${editObject.bAndW ? 'Yes' : 'No'}</h5>
-                <img class='photo-card-img' src='https://picsum.photos/id/625/600'>
+                <img class='photo-card-img' src='https://picsum.photos/id/${unsplashIdForImg.id}/600'>
                 `
-
+                hideModal()
             })
             .catch(err => {
                 console.error('Error:', err);
@@ -406,7 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Define the data to be updated
             
-    }}
+    }
+    }
 
     // CHRISTIAN -> DELETE Request
     const deletePhoto = (e) => {
